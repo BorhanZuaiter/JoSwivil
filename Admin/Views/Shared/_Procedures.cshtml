@@ -1,0 +1,31 @@
+﻿@using System.Security.Claims
+@using Domain.Common
+@model ProceduresButtons
+@{
+    var controller = this.ViewContext.RouteData.Values["controller"].ToString();
+    var role = Context.User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).FirstOrDefault();
+}
+<div class="d-flex justify-content-center">
+    <div>
+        <div class="btn-toolbar demo-inline-spacing" role="toolbar" aria-label="Toolbar with button groups" dir="rtl">
+            <div class="btn-group" role="group" aria-label="First group">
+                @if (role == "Super Admin")
+                {
+
+                    @if (Model.HasEdit)
+                    {
+                        <a class="btn btn-secondary" href="/@controller/Edit/@Model.Id" title="Edit">
+                            <i class="bx bxs-edit"></i>
+                        </a>
+                    }
+                    @if (Model.HasDelete)
+                    {
+                        <button class="btn btn-danger" onclick="DeleteConfirm('@Model.Id')" title="Delete">
+                            <i class="bx bxs-trash"></i>
+                        </button>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
