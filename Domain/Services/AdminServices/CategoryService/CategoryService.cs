@@ -7,12 +7,10 @@ namespace Domain.Services.AdminServices.CategoryService
     public class CategoryService : ICategoryService
     {
         private readonly VODContext _db;
-        private readonly StorageConnection _storageConnection;
 
-        public CategoryService(VODContext db, StorageConnection storageConnection)
+        public CategoryService(VODContext db)
         {
             _db = db;
-            _storageConnection = storageConnection;
         }
         public QueryResult<CategoryDto> GetList(SearchCriteria model)
         {
@@ -63,6 +61,10 @@ namespace Domain.Services.AdminServices.CategoryService
             obj.ModifiedOn = DateTime.Now;
             _db.Categories.Update(obj);
             return _db.SaveChanges() > 0;
+        }
+        public List<CategoryDto> GetDDL()
+        {
+            return _db.Categories.Where(r => r.IsDeleted == false).Select(a => new CategoryDto { Id = a.Id, Name = a.Name }).ToList();
         }
     }
 }

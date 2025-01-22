@@ -10,5 +10,6 @@ namespace Domain.Services.AdminServices.SellerService
         SellerDto GetById(int Id);
         Task<bool> Edit(SellerDto input, string userId);
         bool Delete(int Id, string userId);
+        List<SellerDto> GetDDL();
     }
 }

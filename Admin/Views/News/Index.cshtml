@@ -23,7 +23,7 @@
                         <tr>
                             <td><strong>@item.Name</strong></td>
                             <td><strong>@item.AutherName</strong></td>
-                            <td><strong>@item.Date.ToString("dd-mm-yyy")</strong></td>
+                            <td><strong>@item.Date.ToString("dd-MM-yyy")</strong></td>
                             <td class="align-middle">
                                 @await Html.PartialAsync("~/Views/Shared/_Procedures.cshtml",
                                          new ProceduresButtons { HasDelete = true, HasEdit = true, Id = item.Id.ToString() })

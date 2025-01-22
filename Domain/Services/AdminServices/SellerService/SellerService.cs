@@ -26,6 +26,7 @@ namespace Domain.Services.AdminServices.SellerService
                     Name = r.Name,
                     Bio = r.Bio,
                     Email = r.Email,
+                    PhoneNumber = r.PhoneNumber,
                 }).ToQueryResult(model.PageNumber, model.PageSize);
             return res;
         }
@@ -103,6 +104,10 @@ namespace Domain.Services.AdminServices.SellerService
             obj.ModifiedOn = DateTime.Now;
             _db.Sellers.Update(obj);
             return _db.SaveChanges() > 0;
+        }
+        public List<SellerDto> GetDDL()
+        {
+            return _db.Sellers.Where(r => r.IsDeleted == false).Select(a => new SellerDto { Id = a.Id, Name = a.Name }).ToList();
         }
     }
 }

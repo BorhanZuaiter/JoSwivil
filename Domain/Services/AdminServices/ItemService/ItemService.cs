@@ -34,16 +34,16 @@ namespace Domain.Services.AdminServices.ItemService
         {
             var obj = new Item();
             obj.Name = input.Name;
-            obj.NumberOfBids = input.NumberOfBids;
-            obj.Price = input.Price;
-            obj.StartingPrice = input.StartingPrice;
-            obj.CurrentBiddingPrice = input.CurrentBiddingPrice;
             obj.Description = input.Description;
+            obj.Brand = input.Brand;
+            obj.Price = input.Price;
             obj.SKU = input.SKU;
             obj.Tags = input.Tags;
             obj.Weight = input.Weight;
             obj.Dimensions = input.Dimensions;
-            obj.Brand = input.Brand;
+            obj.NumberOfBids = input.NumberOfBids;
+            obj.StartingPrice = input.StartingPrice;
+            obj.CurrentBiddingPrice = input.CurrentBiddingPrice;
             obj.CategoryId = input.CategoryId;
             obj.SellerId = input.SellerId;
             obj.StartDate = input.StartDate;

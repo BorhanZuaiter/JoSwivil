@@ -26,6 +26,7 @@ namespace Domain.Services.AdminServices.NewsService
                     Name = r.Name,
                     AutherName = r.AutherName,
                     Description = r.Description,
+                    Date = r.Date,
                 }).ToQueryResult(model.PageNumber, model.PageSize);
             return res;
         }

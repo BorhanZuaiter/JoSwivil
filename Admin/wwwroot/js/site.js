@@ -108,4 +108,40 @@ function HideLoadingButton(buttonId, loadingButtonId) {
         loadingButton.classList.add('d-none');
     }
 }
+function GetCategories(index) {
+    $.ajax({
+        url: '/Category/GetDDL',
+        type: 'Get',
+        success: function (datareturn) {
+            $("#CategoryId option").remove();
+            $("#CategoryId").append($("<option/>").val(0).text("اختر الفئة"));
+            $.each(datareturn, function () {
+                if (this.id == index) {
+                    $("#CategoryId").append($("<option/>").val(this.id).text(this.name).attr('selected', 'selected'));
+                }
+                else {
+                    $("#CategoryId").append($("<option/>").val(this.id).text(this.name));
+                }
+            });
+        }
+    });
+}
+function GetSellers(index) {
+    $.ajax({
+        url: '/Seller/GetDDL',
+        type: 'Get',
+        success: function (datareturn) {
+            $("#SellerId option").remove();
+            $("#SellerId").append($("<option/>").val(0).text("اختر التاجر"));
+            $.each(datareturn, function () {
+                if (this.id == index) {
+                    $("#SellerId").append($("<option/>").val(this.id).text(this.name).attr('selected', 'selected'));
+                }
+                else {
+                    $("#SellerId").append($("<option/>").val(this.id).text(this.name));
+                }
+            });
+        }
+    });
+}
 

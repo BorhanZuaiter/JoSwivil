@@ -39,6 +39,7 @@ namespace Admin.Controllers
             if (res)
                 return Json(new { status = true });
             return Json(new { status = false, message = "حدث خطأ ما" });
+
         }
         public IActionResult Edit(int Id)
         {
@@ -48,11 +49,16 @@ namespace Admin.Controllers
         [HttpPut]
         public async Task<IActionResult> Edit(NewsDto data)
         {
-            var user = await _userManager.GetUserAsync(User);
-            var res = await _service.Edit(data, user.Id);
-            if (res)
-                return Json(new { status = true });
-            return Json(new { status = false, message = "حدث خطأ ما" });
+            try
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var res = await _service.Edit(data, user.Id);
+                if (res)
+                    return Json(new { status = true });
+                return Json(new { status = false, message = "حدث خطأ ما" });
+            }
+            catch (Exception ex) { throw ex; }
+
         }
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)

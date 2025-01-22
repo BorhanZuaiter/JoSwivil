@@ -31,8 +31,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">التاريخ</label>
-                            <input type="date" class="form-control" name="Date" id="Date" value="@Model.Date" title="ادخل التاريخ" required>
+                            <label class="form-label">تاريخ النشر</label>
+                            <input type="date" class="form-control" name="Date" id="Date" value="@Model.Date.ToString("yyyy-MM-dd")" placeholder="ادخل تاريخ النشر" required>
                         </div>
                         <div class="mb-3">
                             <img src="@Model.PrivewImageUrl" height="200" width="200" />
@@ -66,14 +66,13 @@
         var Name = $('#Name').val();
         var AutherName = $('#AutherName').val();
         var Description = $('#Description').val();
-        var Tags = $('#Tags').val();
         var Date = $('#Date').val();
         var DetailsImageUrl = $('#DetailsImageUrl').val();
         var PrivewImageUrl = $('#PrivewImageUrl').val();
-        var PrivewImage = document.getElementById("PrivewImage").files;
+        var PrivewImage = document.getElementById("PreviewImage").files;
         var DetailsImage = document.getElementById("DetailsImage").files;
 
-        if (!Title && !MainDescription) {
+        if (!Name && !MainDescription) {
             OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
             return false;
         }
@@ -85,7 +84,6 @@
         formData.append("Name", Name);
         formData.append("AutherName", AutherName);
         formData.append("Description", Description);
-        formData.append("Tags", Tags);
         formData.append("Date", Date);
         formData.append("PrivewImageUrl", PrivewImageUrl);
         formData.append("DetailsImageUrl", DetailsImageUrl);

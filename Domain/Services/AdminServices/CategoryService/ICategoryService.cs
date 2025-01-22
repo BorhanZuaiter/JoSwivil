@@ -10,5 +10,6 @@ namespace Domain.Services.AdminServices.CategoryService
         CategoryDto GetById(int Id);
         Task<bool> Edit(CategoryDto input, string userId);
         bool Delete(int Id, string userId);
+        List<CategoryDto> GetDDL();
     }
 }

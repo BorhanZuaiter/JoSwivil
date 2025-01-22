@@ -63,5 +63,9 @@ namespace Admin.Controllers
                 return Json(new { status = true });
             return Json(new { status = false, message = "حدث خطأ ما" });
         }
+        public JsonResult GetDDl()
+        {
+            return Json(_service.GetDDL());
+        }
     }
 }
