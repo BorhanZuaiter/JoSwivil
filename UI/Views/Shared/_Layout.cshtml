@@ -1,49 +1,262 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - UI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/UI.styles.css" asp-append-version="true" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icon CSS -->
+    <link href="../../../../assets/css/bootstrap-icons.css" rel="stylesheet">
+    <!-- Swiper slider CSS -->
+    <link rel="stylesheet" href="../../../../assets/css/swiper-bundle.min.css">
+    <!--Nice Select CSS -->
+    <link rel="stylesheet" href="../../../../assets/css/nice-select.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="../../../../assets/css/animate.min.css">
+    <link rel="stylesheet" href="../../../../assets/css/jquery.fancybox.min.css">
+    <!-- BoxIcon  CSS -->
+    <link href="../../../../assets/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../../assets/css/style.css">
+    <!-- Title -->
+    <title>Mazadkom</title>
+    <link rel="icon" href="../../../../assets/img/fav-icon.svg" type="image/gif" sizes="20x20">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+  
+    <div class="circle-container">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M7.03516 0.416666L7.03516 15H8.28516L8.28516 0.416666H7.03516Z" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M8.28516 1.04115C8.28516 3.98115 5.70016 6.38281 2.94349 6.38281H2.31849V5.13281H2.94349C5.03599 5.13281 7.03516 3.26448 7.03516 1.04115V0.416979H8.28516V1.04115Z" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M7.03333 1.04115C7.03333 3.98115 9.61833 6.38281 12.375 6.38281H13V5.13281H12.375C10.2817 5.13281 8.28333 3.26448 8.28333 1.04115V0.416979H7.03333V1.04115Z" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="header-topbar-area">
+        <div class="topbar-area">
+            <div class="container">
+                <div class="topbar-wrap">
+                    <div class="topbar-left">
+                        <ul class="contact-area">
+                            <li>
+                                <a href="mailto:info@example.com">
+                                    <svg width="20" height="16" viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.2422 0.96875H1.75781C0.786602 0.96875 0 1.76023 0 2.72656V13.2734C0 14.2455 0.792383 15.0312 1.75781 15.0312H18.2422C19.2053 15.0312 20 14.2488 20 13.2734V2.72656C20 1.76195 19.2165 0.96875 18.2422 0.96875ZM17.996 2.14062L11.243 8.85809C10.9109 9.19012 10.4695 9.37293 10 9.37293C9.53047 9.37293 9.08906 9.19008 8.75594 8.85699L2.00398 2.14062H17.996ZM1.17188 13.0349V2.96582L6.23586 8.00312L1.17188 13.0349ZM2.00473 13.8594L7.06672 8.82957L7.9284 9.68672C8.48176 10.2401 9.21746 10.5448 10 10.5448C10.7825 10.5448 11.5182 10.2401 12.0705 9.68781L12.9333 8.82957L17.9953 13.8594H2.00473ZM18.8281 13.0349L13.7641 8.00312L18.8281 2.96582V13.0349Z" />
+                                    </svg>
+                                    info@example.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="topbar-right">
+                        <ul>
+                            <li><a href="/Home/HowToBid">HOW TO BID</a></li>
+                            <li><a href="/Home/HowToSell">SELL YOUR ITEM</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
+        </div>
+        <header class="header-area style-1 d-flex flex-nowrap align-items-center justify-content-between">
+            <div class="nav-left">
+                <div class="company-logo">
+                    <a href="/Home/Index"><img alt="image" class="img-fluid" src="../../../../assets/img/logo.svg"></a>
+                </div>
+                <div class="main-menu">
+                    <div class="mobile-logo-area d-lg-none d-flex justify-content-center">
+                        <div class="mobile-logo-wrap">
+                            <a href="/Home/Index"><img alt="image" src="../../../../assets/img/logo.svg"></a>
+                        </div>
+                    </div>
+                    <ul class="menu-list">
+                        <li><a href="/Home/Index" class="drop-down">Home</a></li>
+                        <li><a href="/Auction/Index" class="drop-down">Auction</a></li>
+                        <li><a href="/Category/Index" class="drop-down">Categories</a></li>
+                        <li><a href="/Seller/Index" class="drop-down">Sellers</a></li>
+                        <li><a href="/News/Index" class="drop-down">Blogs</a></li>
+                        <li><a href="/Home/AboutUs" class="drop-down">About Us</a></li>
+                        <li><a href="/Home/ContactUs" class="drop-down">Contact Us</a></li>
+                    </ul>
+                    <ul class="contact-area d-lg-none d-flex">
+                        <li>
+                            <a href="mailto:info@example.com">
+                                <svg width="20" height="16" viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.2422 0.96875H1.75781C0.786602 0.96875 0 1.76023 0 2.72656V13.2734C0 14.2455 0.792383 15.0312 1.75781 15.0312H18.2422C19.2053 15.0312 20 14.2488 20 13.2734V2.72656C20 1.76195 19.2165 0.96875 18.2422 0.96875ZM17.996 2.14062L11.243 8.85809C10.9109 9.19012 10.4695 9.37293 10 9.37293C9.53047 9.37293 9.08906 9.19008 8.75594 8.85699L2.00398 2.14062H17.996ZM1.17188 13.0349V2.96582L6.23586 8.00312L1.17188 13.0349ZM2.00473 13.8594L7.06672 8.82957L7.9284 9.68672C8.48176 10.2401 9.21746 10.5448 10 10.5448C10.7825 10.5448 11.5182 10.2401 12.0705 9.68781L12.9333 8.82957L17.9953 13.8594H2.00473ZM18.8281 13.0349L13.7641 8.00312L18.8281 2.96582V13.0349Z" />
+                                </svg>
+                                info@example.com
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="btn-area d-lg-none d-flex">
+                        <a href="/Account/Dashboard" class="login-btn btn-hover">
+                            <svg width="15" height="19" viewBox="0 0 15 19" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.8751 4.17663C11.875 5.00255 11.6183 5.8099 11.1375 6.49658C10.6567 7.18326 9.97335 7.71843 9.17389 8.03442C8.37443 8.35041 7.49475 8.43303 6.6461 8.27184C5.79744 8.11064 5.01792 7.71286 4.40611 7.12881C3.79429 6.54475 3.37766 5.80064 3.20889 4.99058C3.04012 4.18052 3.1268 3.34088 3.45796 2.57783C3.78912 1.81479 4.34989 1.16261 5.06937 0.703757C5.78884 0.244909 6.6347 7.28125e-09 7.5 0C8.07459 3.64089e-05 8.64354 0.108097 9.17438 0.318012C9.70521 0.527927 10.1875 0.835585 10.5938 1.22342C11.0001 1.61126 11.3223 2.07167 11.5422 2.57839C11.762 3.0851 11.8752 3.62818 11.8751 4.17663ZM7.5 9.58844C6.26105 9.58705 5.0354 9.83216 3.90124 10.3082C2.76708 10.7842 1.74932 11.4806 0.912902 12.353C-0.563582 13.8885 -0.20194 16.3311 1.6571 17.4243C3.41487 18.4546 5.43728 19 7.5 19C9.56272 19 11.5851 18.4546 13.3429 17.4243C15.2019 16.3311 15.5636 13.8885 14.0871 12.353C13.2507 11.4806 12.2329 10.7842 11.0988 10.3082C9.9646 9.83216 8.73895 9.58705 7.5 9.58844Z" />
+                            </svg>
+                            My Account
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right d-flex jsutify-content-end align-items-center">
+                <a href="/Account/Dashboard" class="login-btn btn-hover d-lg-flex d-none">
+                    <svg width="15" height="19" viewBox="0 0 15 19" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.8751 4.17663C11.875 5.00255 11.6183 5.8099 11.1375 6.49658C10.6567 7.18326 9.97335 7.71843 9.17389 8.03442C8.37443 8.35041 7.49475 8.43303 6.6461 8.27184C5.79744 8.11064 5.01792 7.71286 4.40611 7.12881C3.79429 6.54475 3.37766 5.80064 3.20889 4.99058C3.04012 4.18052 3.1268 3.34088 3.45796 2.57783C3.78912 1.81479 4.34989 1.16261 5.06937 0.703757C5.78884 0.244909 6.6347 7.28125e-09 7.5 0C8.07459 3.64089e-05 8.64354 0.108097 9.17438 0.318012C9.70521 0.527927 10.1875 0.835585 10.5938 1.22342C11.0001 1.61126 11.3223 2.07167 11.5422 2.57839C11.762 3.0851 11.8752 3.62818 11.8751 4.17663ZM7.5 9.58844C6.26105 9.58705 5.0354 9.83216 3.90124 10.3082C2.76708 10.7842 1.74932 11.4806 0.912902 12.353C-0.563582 13.8885 -0.20194 16.3311 1.6571 17.4243C3.41487 18.4546 5.43728 19 7.5 19C9.56272 19 11.5851 18.4546 13.3429 17.4243C15.2019 16.3311 15.5636 13.8885 14.0871 12.353C13.2507 11.4806 12.2329 10.7842 11.0988 10.3082C9.9646 9.83216 8.73895 9.58705 7.5 9.58844Z" />
+                    </svg>
+                    My Account
+                    <span></span>
+                </a>
+                <div class="sidebar-button mobile-menu-btn">
+                    <span></span>
+                </div>
+            </div>
+        </header>
+    </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer>
+        <div class="footer-wrapper">
+            <div class="container">
+                <div class="footer-menu-wrap">
+                    <div class="row g-lg-4 gy-5">
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="footer-widget">
+                                <div class="widget-title">
+                                    <h4>Links</h4>
+                                </div>
+                                <div class="menu-container">
+                                    <ul class="widget-list">
+                                        <li><a href="/Home/Index">Home</a></li>
+                                        <li><a href="/Home/AboutUs">About Us</a></li>
+                                        <li><a href="/Home/ContactUs">Contact Us</a></li>
+                                        <li><a href="/News/Index">Blogs</a></li>
+                                        <li><a href="/Home/FAQ">F.A.Q</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="footer-widget">
+                                <div class="widget-title">
+                                    <h4>Company</h4>
+                                </div>
+                                <div class="menu-container">
+                                    <ul class="widget-list">
+                                        <li><a href="/Category/Index">Categories</a></li>
+                                        <li><a href="/Auction/Index">Auctions</a></li>
+                                        <li><a href="/Seller/Index">Sellers</a></li>
+                                        <li><a href="/Home/HowToBid">How to bid with us</a></li>
+                                        <li><a href="/Home/HowToSell">How to sell with us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 d-flex align-items-center justify-content-lg-center justify-content-start">
+                            <div class="footer-logo-area">
+                                <div class="footer-logo">
+                                    <img src="../../assets/img/footer-logo.svg" alt="">
+                                </div>
+                                <div class="social-area">
+                                    <h5>Social Just You Connected Us!</h5>
+                                    <p>All of update in social</p>
+                                    <ul class="social-list">
+                                        <li>
+                                            <a href="https://www.linkedin.com/">
+                                                <i class="bi bi-linkedin"></i>
+                                                <span>LinkedIn</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.facebook.com/">
+                                                <i class="bi bi-facebook"></i>
+                                                <span>Facebook</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/">
+                                                <i class="bi bi-twitter-x"></i>
+                                                <span>Twitter</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/">
+                                                <i class="bi bi-instagram"></i>
+                                                <span>Instagram</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 d-flex justify-content-sm-end justify-content-start">
+                            <div class="newletter-and-payment-wrap">
+                                <div class="payment-area">
+                                    <h6>Secured Payment Gateways</h6>
+                                    <ul class="payment-options">
+                                        <li><img src="../../assets/img/home1/icon/visa.svg" alt=""></li>
+                                        <li><img src="../../assets/img/home1/icon/master-card.svg" alt=""></li>
+                                        <li><img src="../../assets/img/home1/icon/american-express.svg" alt=""></li>
+                                        <li><img src="../../assets/img/home1/icon/maestro.svg" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="copyright-area">
+                        <p>©Copyright 2024 <a href="/Home/Index"">Probid</a> | Design By <a href="https://www.egenslab.com/">Egens Lab</a></p>
+                    </div>
+                    <div class="footer-bottom-right">
+                        <ul>
+                            <li><a href="/Home/TermsAndCondition">Terms & Conditions</a></li>
+                            <li><a href="/Home/Privacy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="../../assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Popper and Bootstrap JS -->
+    <script src="../../assets/js/popper.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <!-- Swiper slider JS -->
+    <script src="../../assets/js/swiper-bundle.min.js"></script>
+    <script src="../../assets/js/slick.min.js"></script>
+    <!-- Waypoints JS -->
+    <script src="../../assets/js/waypoints.min.js"></script>
+    <!-- Counterup JS -->
+    <script src="../../assets/js/jquery.counterup.min.js"></script>
+    <!-- Nice Select  JS -->
+    <script src="../../assets/js/jquery.nice-select.min.js"></script>
+    <!-- Fancybox  JS -->
+    <script src="../../assets/js/jquery.fancybox.min.js"></script>
+    <!-- Wow  JS -->
+    <script src="../../assets/js/wow.min.js"></script>
+
+
+
+
+    <!-- Marquee  JS -->
+    <script src="../../assets/js/jquery.marquee.min.js"></script>
+
+    <script src="../../assets/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -17,12 +17,38 @@ namespace UI.Controllers
         {
             return View();
         }
-
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+        public IActionResult HowToSell()
+        {
+            return View();
+        }
+        public IActionResult HowToBid()
+        {
+            return View();
+        }
+        public IActionResult FAQ()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
         }
-
+        public IActionResult TermsAndCondition()
+        {
+            return View();
+        }
+        public IActionResult ErrorPage()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

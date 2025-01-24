@@ -2,9 +2,13 @@
 
 namespace UI.Controllers
 {
-    public class FAQController : Controller
+    public class AuctionController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Details()
         {
             return View();
         }
