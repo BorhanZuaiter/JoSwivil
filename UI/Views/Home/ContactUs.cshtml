@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Domain.DTO.UIDtos
+@model FeedbackDto
+@{
     ViewData["Title"] = "ContactUs";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -75,30 +77,24 @@
             </div>
             <div class="col-lg-7">
                 <div class="contact-form-area">
-                    <form>
+                    <form id="MessageForm" asp-controller="Home" asp-action="ContactUs" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-12 mb-20">
                                 <div class="form-inner">
-                                    <label>Name*</label>
-                                    <input type="text" placeholder="Daniel Scoot">
+                                    <label asp-for="Name">Name*</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Daniel Scoot" />
                                 </div>
                             </div>
                             <div class="col-md-6 mb-20">
                                 <div class="form-inner">
-                                    <label>Phone</label>
-                                    <input type="text" placeholder="+8801700000000">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-20">
-                                <div class="form-inner">
-                                    <label>Email</label>
-                                    <input type="email" placeholder="info@example.com">
+                                    <label asp-for="Email">Email*</label>
+                                    <input asp-for="Email" class="form-control" placeholder="info@example.com" />
                                 </div>
                             </div>
                             <div class="col-md-12 mb-30">
                                 <div class="form-inner">
-                                    <label>Write Your Massage*</label>
-                                    <textarea placeholder="What’s on your mind"></textarea>
+                                    <label asp-for="Message">Write Your Message*</label>
+                                    <textarea asp-for="Message" class="form-control" placeholder="What’s on your mind"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -112,6 +108,7 @@
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
@@ -119,3 +116,8 @@
 <div class="contact-map">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.5647631857846!2d90.36311167605992!3d23.83407118555764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c14c8682a473%3A0xa6c74743d52adb88!2sEgens%20Lab!5e0!3m2!1sen!2sbd!4v1700138349574!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
+<script>
+    document.getElementById('MessageForm').addEventListener('submit', function (e) {
+        alert("Your message has been submitted successfully!");
+    });
+</script>

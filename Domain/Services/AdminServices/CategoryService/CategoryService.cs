@@ -7,10 +7,12 @@ namespace Domain.Services.AdminServices.CategoryService
     public class CategoryService : ICategoryService
     {
         private readonly VODContext _db;
+        private readonly StorageConnection _storageConnection;
 
-        public CategoryService(VODContext db)
+        public CategoryService(VODContext db, StorageConnection storageConnection)
         {
             _db = db;
+            _storageConnection = storageConnection;
         }
         public QueryResult<CategoryDto> GetList(SearchCriteria model)
         {
@@ -29,6 +31,9 @@ namespace Domain.Services.AdminServices.CategoryService
         {
             var obj = new Category();
             obj.Name = input.Name;
+            if (input.PrivewImage is not null)
+                obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Category");
+
             obj.CreatedBy = userId;
             obj.CreatedOn = DateTime.Now;
             _db.Categories.Add(obj);
@@ -48,6 +53,9 @@ namespace Domain.Services.AdminServices.CategoryService
         {
             var obj = _db.Categories.Where(r => r.Id == input.Id).FirstOrDefault();
             obj.Name = input.Name;
+            if (input.PrivewImage is not null)
+                obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Category");
+
             obj.ModifiedBy = userId;
             obj.ModifiedOn = DateTime.Now;
             _db.Categories.Update(obj);

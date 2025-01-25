@@ -1,3 +1,5 @@
+using Domain.DTO.UIDtos;
+using Domain.Services.UIServices.HomeService;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using UI.Models;
@@ -7,21 +9,36 @@ namespace UI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHomeService _service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHomeService service)
         {
             _logger = logger;
+            _service = service;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult AboutUs()
+        public IActionResult FAQ()
         {
-            return View();
+            var res = _service.GetFAQs();
+            return View(res);
         }
         public IActionResult ContactUs()
+        {
+            return View(new FeedbackDto());
+        }
+        [HttpPost]
+        public async Task<IActionResult> ContactUs(FeedbackDto data)
+        {
+            var result = await _service.InsertFeeback(data);
+            if (result)
+                return RedirectToAction("ContactUs");
+            return View(data);
+        }
+        public IActionResult AboutUs()
         {
             return View();
         }
@@ -30,10 +47,6 @@ namespace UI.Controllers
             return View();
         }
         public IActionResult HowToBid()
-        {
-            return View();
-        }
-        public IActionResult FAQ()
         {
             return View();
         }

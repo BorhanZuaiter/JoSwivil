@@ -4,6 +4,8 @@ using Domain.Entities;
 using Domain.Helpers;
 using Domain.Services.AdminServices.CategoryService;
 using Domain.Services.AdminServices.FAQService;
+using Domain.Services.AdminServices.Feedbackervice;
+using Domain.Services.AdminServices.FeedbackService;
 using Domain.Services.AdminServices.ItemService;
 using Domain.Services.AdminServices.NewsService;
 using Domain.Services.AdminServices.SellerService;
@@ -46,6 +48,7 @@ builder.Services.AddTransient<ISellerService, SellerService>();
 builder.Services.AddTransient<INewsService, NewsService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+builder.Services.AddScoped<IFeedbackService, Feedbackervice>();
 builder.Services.AddTransient<StorageConnection>();
 
 var app = builder.Build();

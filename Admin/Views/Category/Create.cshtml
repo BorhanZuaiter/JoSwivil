@@ -19,6 +19,11 @@
                             <label class="form-label">الاسم</label>
                             <input type="text" name="Name" id="Name" class="form-control" placeholder="ادخل الاسم">
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color:red">*</label>
+                            <label class="form-label">صورة العرض</label>
+                            <input type="file" class="form-control" name="PrivewImage" id="PrivewImage" placeholder="ارفق صورة العرض" required>
+                        </div>
                         <button type="button" class="btn btn-primary d-inline" id="CreateButton" onclick="CreateData()">انشاء</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
@@ -33,6 +38,8 @@
 <script>
     function CreateData() {
         var Name = $('#Name').val();
+        var PrivewImage = document.getElementById("PrivewImage").files;
+
 
         if (!Name) {
             OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
@@ -43,6 +50,7 @@
 
         var formData = new FormData();
         formData.append("Name", Name);
+        formData.append("PrivewImage", PrivewImage[0]);
 
         Create("@controller", formData);
     }

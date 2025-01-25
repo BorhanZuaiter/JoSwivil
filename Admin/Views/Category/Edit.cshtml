@@ -19,6 +19,15 @@
                             <label class="form-label">الاسم</label>
                             <input type="text" name="Name" id="Name" class="form-control" value="@Model.Name" placeholder="ادخل الاسم">
                         </div>
+                        <div class="mb-3">
+                            <img src="@Model.PrivewImageUrl" height="200" width="200" />
+                            <input type="text" hidden name="PreviewImageUrl" class="form-control" value="@Model.PrivewImageUrl">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color:red">*</label>
+                            <label class="form-label">صورة العرض</label>
+                            <input type="file" class="form-control" name="PrivewImage" id="PrivewImage" placeholder="ارفق صورة العرض" required>
+                        </div>
                         <button type="button" class="btn btn-primary d-inline" id="EditButton" onclick="EditData()">تعديل</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
@@ -33,6 +42,7 @@
 <script>
     function EditData() {
         var Name = $('#Name').val();
+        var PrivewImage = document.getElementById("PrivewImage").files;
 
         if ( !Name) {
             OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
@@ -44,6 +54,7 @@
         var formData = new FormData();
         formData.append("Id", "@Model.Id");
         formData.append("Name", Name);
+        formData.append("PrivewImage", PrivewImage[0]);
 
         Edit("@controller", formData);
     }

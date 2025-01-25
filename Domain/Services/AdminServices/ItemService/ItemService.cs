@@ -50,10 +50,10 @@ namespace Domain.Services.AdminServices.ItemService
             obj.EndDate = input.EndDate;
 
             if (input.PrivewImage is not null)
-                obj.DetailsImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Items");
+                obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Items");
 
             if (input.DetailsImage is not null)
-                obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.DetailsImage, "Items");
+                obj.DetailsImageUrl = await _storageConnection.SaveOnStorage(input.DetailsImage, "Items");
 
 
             obj.CreatedBy = userId;
@@ -107,10 +107,10 @@ namespace Domain.Services.AdminServices.ItemService
             obj.EndDate = input.EndDate;
 
             if (input.PrivewImage is not null)
-                obj.DetailsImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Items");
+                obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Items");
 
             if (input.DetailsImage is not null)
-                obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.DetailsImage, "Items");
+                obj.DetailsImageUrl = await _storageConnection.SaveOnStorage(input.DetailsImage, "Items");
 
             obj.ModifiedBy = userId;
             obj.ModifiedOn = DateTime.Now;

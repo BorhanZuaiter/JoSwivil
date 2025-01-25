@@ -1,4 +1,5 @@
-﻿
+﻿@using Domain.DTO.UIDtos
+@model List<CategoryDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,28 +25,20 @@
 <div class="category-grid-section pt-110 mb-110">
     <div class="container">
         <div class="row gy-5 row-cols-xxl-6 row-cols-xl-5 row-cols-md-4 row-cols-sm-3 row-cols-2">
+                @foreach(var item in Model){
             <div class="col wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
                 <div class="category-card">
                     <a href="auction-sidebar.html" class="category-img">
-                        <img src="../../assets/img/home1/category-img1.jpg" alt="">
+                        <img src="@item.PrivewImageUrl" alt="">
                     </a>
                     <div class="category-content">
-                        <h5><a href="auction-sidebar.html">Automotive</a></h5>
-                        <span>45,533 Item</span>
-                    </div>
+                        <h5><a href="auction-sidebar.html">@item.Name</a></h5>
+@*                         <span>@item.Items.Count Item</span>
+ *@                    </div>
                 </div>
             </div>
-            <div class="col wow animate fadeInDown" data-wow-delay="300ms" data-wow-duration="1500ms">
-                <div class="category-card">
-                    <a href="auction-sidebar.html" class="category-img">
-                        <img src="../../assets/img/home1/category-img2.jpg" alt="">
-                    </a>
-                    <div class="category-content">
-                        <h5><a href="auction-sidebar.html">Antiques</a></h5>
-                        <span>45,680 Item</span>
-                    </div>
-                </div>
-            </div>
+            }
+
         </div>
     </div>
 </div>

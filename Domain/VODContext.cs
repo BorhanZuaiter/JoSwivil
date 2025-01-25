@@ -100,5 +100,6 @@ namespace Domain
         public DbSet<Item> Items { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Seller> Sellers { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
     }
 }

@@ -4,7 +4,8 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string NameEn { get; set; }
-        public int NumberOfItems { get; set; }
+        public string PrivewImageUrl { get; set; }
+        public ICollection<ItemDto> Items { get; set; }
+
     }
 }
