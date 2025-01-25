@@ -1,4 +1,6 @@
 using Domain.DTO.UIDtos;
+using Domain.Services.UIServices.AuctionService;
+using Domain.Services.UIServices.CategoryService;
 using Domain.Services.UIServices.HomeService;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -10,16 +12,24 @@ namespace UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHomeService _service;
+        private readonly IAuctionService _auctionService;
+        private readonly ICategoryService _categoryService;
 
-        public HomeController(ILogger<HomeController> logger, IHomeService service)
+        public HomeController(ILogger<HomeController> logger, IHomeService service, IAuctionService auction, ICategoryService category)
         {
             _logger = logger;
             _service = service;
+            _auctionService = auction;
+            _categoryService = category;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var Auctions = _auctionService.GetHomeAuctions();
+            var Categories = _categoryService.GetHomecategories();
+            var data = new HomeDto { Auction = Auctions, Category = Categories };
+            return View(data);
+
         }
         public IActionResult FAQ()
         {

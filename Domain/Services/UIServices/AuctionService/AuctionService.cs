@@ -10,6 +10,29 @@ namespace Domain.Services.UIServices.AuctionService
         {
             _db = db;
         }
+        public List<ItemDto> GetHomeAuctions()
+        {
+            var List = _db.Items
+                .Where(r => r.IsDeleted == false)
+                .OrderBy(x => Guid.NewGuid())
+                .Select(a => new ItemDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Sellername = a.Seller.Name,
+                    Sellerimage = a.Seller.ProfileImageUrl,
+                    PrivewImageUrl = a.PrivewImageUrl,
+                    CurrentBiddingPrice = a.CurrentBiddingPrice,
+                    SKU = a.SKU,
+                    StartDate = a.StartDate,
+                    EndDate = a.EndDate,
+                })
+                .Take(10)
+                .ToList();
+            return List;
+
+        }
+
         public List<ItemDto> GetAuctions()
         {
             var List = _db.Items.OrderByDescending(x => x.Id)

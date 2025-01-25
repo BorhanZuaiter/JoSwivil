@@ -10,6 +10,22 @@ namespace Domain.Services.UIServices.CategoryService
         {
             _db = db;
         }
+        public List<CategoryDto> GetHomecategories()
+        {
+            var List = _db.Categories
+                .Where(r => r.IsDeleted == false)
+                .OrderBy(x => Guid.NewGuid())
+                .Select(a => new CategoryDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    PrivewImageUrl = a.PrivewImageUrl,
+                })
+                .Take(10)
+                .ToList();
+            return List;
+
+        }
         public List<CategoryDto> GetCategory()
         {
             var List = _db.Categories.OrderByDescending(x => x.Id)

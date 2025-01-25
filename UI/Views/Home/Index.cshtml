@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Domain.DTO.UIDtos
+@model HomeDto
+@{
     ViewData["Title"] = "Home Page";
 }
 <div class="home1-banner-section mb-110">
@@ -42,7 +44,7 @@
                     </li>
                 </ul>
                 <div class="button-area">
-                    <a class="primary-btn btn-hover white-bg" href="auction-grid.html">
+                    <a class="primary-btn btn-hover white-bg" href="/Auction/Index">
                         View All Auction
                         <span></span>
                     </a>
@@ -75,16 +77,20 @@
                 </div>
             </div>
         </div>
+       
         <div class="auction-slider-area mb-70 wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+           
             <div class="row">
                 <div class="col-lg-12">
                     <div class="swiper auction-slider">
                         <div class="swiper-wrapper">
+                            @foreach (var item in Model.Auction)
+                            {
                             <div class="swiper-slide">
                                 <div class="auction-card">
                                     <div class="auction-card-img-wrap">
-                                        <a href="auction-details.html" class="card-img">
-                                            <img src="../../assets/img/home1/auction-img2.jpg" alt="">
+                                        <a href="/Auction/Details/@item.Id" class="card-img">
+                                            <img src="@item.PrivewImageUrl" alt="">
                                         </a>
                                         <div class="batch">
                                             <span class="live">
@@ -115,7 +121,7 @@
                                             </li>
                                         </ul>
                                         <div class="countdown-timer">
-                                            <ul data-countdown="2024-08-02 12:00:00">
+                                            <ul data-countdown="@item.EndDate">
                                                 <li class="times" data-days="00">00</li>
                                                 <li class="colon">
                                                     :
@@ -134,44 +140,46 @@
                                     </div>
                                     <div class="auction-card-content">
                                         <h6>
-                                            <a href="auction-details.html">
-                                                Heritage had curating watch time
-                                                treasures.
+                                                <a href="/Auction/Details/@item.Id">
+                                               @item.Name
                                             </a>
                                         </h6>
                                         <div class="price-and-code-area">
                                             <div class="price">
                                                 <span>Current Bid at:</span>
-                                                <strong>$3,780</strong>
+                                                <strong>$@item.CurrentBiddingPrice</strong>
                                             </div>
                                             <div class="code">
-                                                <span>Lot # 25896752</span>
+                                                <span>Lot # @item.SKU</span>
                                             </div>
                                         </div>
                                         <div class="author-and-btn-area">
-                                            <a href="store-details.html" class="author-area">
+                                            <a href="/Seller/Details/@item.Id" class="author-area">
                                                 <div class="author-img">
-                                                    <img src="../../assets/img/home1/auction-card-author-img2.png" alt="">
+                                                    <img src="@item.Sellerimage" alt="">
                                                 </div>
                                                 <div class="author-content">
-                                                    <h6>Wyatt Matthew</h6>
+                                                    <h6>@item.Sellername</h6>
                                                 </div>
                                             </a>
-                                            <a href="auction-details.html" class="bid-btn">
+                                                <a href="/Auction/Details/@item.Id" class="bid-btn">
                                                 Bid Now
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+      
+
         <div class="row wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
             <div class="col-lg-12 d-flex justify-content-center">
-                <a class="view-button" href="auction-grid.html">
+                <a class="view-button" href="/Auction/Index">
                     View All Auction
                     <svg viewBox="0 0 13 20">
                         <polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline>
@@ -206,22 +214,26 @@
                     </div>
                 </div>
             </div>
+           
             <div class="category-slider-area wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
                 <div class="row">
                     <div class="col-lg-12">
+                       
                         <div class="swiper home1-category-slider">
                             <div class="swiper-wrapper">
+                                @foreach (var item in Model.Category)
+                                {
                                 <div class="swiper-slide">
                                     <div class="category-card">
-                                        <a href="auction-sidebar.html" class="category-img">
-                                            <img src="../../assets/img/home1/category-img1.jpg" alt="">
+                                            <a href="/Category/CategoryAuctions/@item.Id" class="category-img">
+                                            <img src="@item.PrivewImageUrl" alt="">
                                         </a>
                                         <div class="category-content">
-                                            <h5><a href="auction-sidebar.html">Automotive</a></h5>
-                                            <span>45,533 Item</span>
+                                                <h5><a href="/Category/CategoryAuctions/@item.Id">@item.Name</a></h5>
                                         </div>
                                     </div>
                                 </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -357,7 +369,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <a class="primary-btn btn-hover wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms" href="about.html">
+                        <a class="primary-btn btn-hover wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms" href="/Home/AboutUs">
                             About us More
                             <svg width="11" height="11" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"

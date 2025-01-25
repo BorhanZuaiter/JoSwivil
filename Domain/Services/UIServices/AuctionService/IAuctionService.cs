@@ -6,5 +6,6 @@ namespace Domain.Services.UIServices.AuctionService
     {
         List<ItemDto> GetAuctions();
         ItemDto GetById(int id);
+        List<ItemDto> GetHomeAuctions();
     }
 }
