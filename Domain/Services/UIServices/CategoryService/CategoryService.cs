@@ -22,15 +22,24 @@ namespace Domain.Services.UIServices.CategoryService
 
             return List;
         }
-        public CategoryDto GetById(int id)
+        public List<ItemDto> GetAuctions(int CategoryId)
         {
-            var res = _db.Categories.Where(r => r.IsDeleted == false && r.Id == id).Select(a => new CategoryDto
-            {
-                Id = a.Id,
-                Name = a.Name,
-                PrivewImageUrl = a.PrivewImageUrl,
-            }).FirstOrDefault();
-            return res;
+            var List = _db.Items.OrderByDescending(x => x.Id)
+                .Where(r => r.IsDeleted == false && r.CategoryId == CategoryId).Select(a => new ItemDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Sellername = a.Seller.Name,
+                    Sellerimage = a.Seller.ProfileImageUrl,
+                    PrivewImageUrl = a.PrivewImageUrl,
+                    CurrentBiddingPrice = a.CurrentBiddingPrice,
+                    SKU = a.SKU,
+                    StartDate = a.StartDate,
+                    EndDate = a.EndDate,
+                    CategoryId = a.CategoryId,
+                }).ToList();
+
+            return List;
         }
     }
 }

@@ -5,6 +5,6 @@ namespace Domain.Services.UIServices.CategoryService
     public interface ICategoryService
     {
         List<CategoryDto> GetCategory();
-        CategoryDto GetById(int id);
+        List<ItemDto> GetAuctions(int CategoryId);
     }
 }

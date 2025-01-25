@@ -1,4 +1,5 @@
-﻿
+﻿@using Domain.DTO.UIDtos
+@model ItemDto
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,101 +30,101 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-img1" role="tabpanel">
                             <div class="auction-details-tab-img">
-                                <img src="../../assets/img/inner-pages/auction-details-img1.jpg" alt="">
+                                <img src="@Model.PrivewImageUrl" alt="">
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-img2" role="tabpanel">
-                            <div class="auction-details-tab-img">
-                                <img src="../../assets/img/inner-pages/auction-details-img2.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-img3" role="tabpanel"
-                             aria-labelledby="v-pills-img3-tab">
-                            <div class="auction-details-tab-img">
-                                <img src="../../assets/img/inner-pages/auction-details-img3.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-img4" role="tabpanel"
-                             aria-labelledby="v-pills-img4-tab">
-                            <div class="auction-details-tab-img">
-                                <img src="../../assets/img/inner-pages/auction-details-img4.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-img5" role="tabpanel"
-                             aria-labelledby="v-pills-img5-tab">
-                            <div class="auction-details-tab-img">
-                                <img src="../../assets/img/inner-pages/auction-details-img5.jpg" alt="">
-                            </div>
-                        </div>
+                    </div>
+                    @*  <div class="tab-pane fade" id="v-pills-img2" role="tabpanel">
+                    <div class="auction-details-tab-img">
+                    <img src="../../assets/img/inner-pages/auction-details-img2.jpg" alt="">
+                    </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-img3" role="tabpanel"
+                    aria-labelledby="v-pills-img3-tab">
+                    <div class="auction-details-tab-img">
+                    <img src="../../assets/img/inner-pages/auction-details-img3.jpg" alt="">
+                    </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-img4" role="tabpanel"
+                    aria-labelledby="v-pills-img4-tab">
+                    <div class="auction-details-tab-img">
+                    <img src="../../assets/img/inner-pages/auction-details-img4.jpg" alt="">
+                    </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-img5" role="tabpanel"
+                    aria-labelledby="v-pills-img5-tab">
+                    <div class="auction-details-tab-img">
+                    <img src="../../assets/img/inner-pages/auction-details-img5.jpg" alt="">
+                    </div>
+                    </div>
                     </div>
                     <div class="nav nav-pills" id="v-pills-tab" role="tablist"
-                         aria-orientation="vertical">
-                        <div class="swiper auction-details-nav-slider">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="v-pills-img1-tab" data-bs-toggle="pill"
-                                                data-bs-target="#v-pills-img1" type="button" role="tab" aria-controls="v-pills-img1" aria-selected="true">
-                                            <img src="../../assets/img/inner-pages/auction-details-img1.jpg" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="nav-item" role="presentation">
-                                        <button class="nav-link" id="v-pills-img2-tab" data-bs-toggle="pill"
-                                                data-bs-target="#v-pills-img2" type="button" role="tab" aria-controls="v-pills-img2"
-                                                aria-selected="false">
-                                            <img src="../../assets/img/inner-pages/auction-details-img2.jpg" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="nav-item" role="presentation">
-                                        <button class="nav-link" id="v-pills-img3-tab" data-bs-toggle="pill"
-                                                data-bs-target="#v-pills-img3" type="button" role="tab" aria-controls="v-pills-img3"
-                                                aria-selected="false">
-                                            <img src="../../assets/img/inner-pages/auction-details-img3.jpg" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="nav-item" role="presentation">
-                                        <button class="nav-link" id="v-pills-img4-tab" data-bs-toggle="pill"
-                                                data-bs-target="#v-pills-img4" type="button" role="tab" aria-controls="v-pills-img4"
-                                                aria-selected="false">
-                                            <img src="../../assets/img/inner-pages/auction-details-img4.jpg" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="nav-item" role="presentation">
-                                        <button class="nav-link" id="v-pills-img5-tab" data-bs-toggle="pill"
-                                                data-bs-target="#v-pills-img5" type="button" role="tab" aria-controls="v-pills-img5"
-                                                aria-selected="false">
-                                            <img src="../../assets/img/inner-pages/auction-details-img5.jpg" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    aria-orientation="vertical">
+                    <div class="swiper auction-details-nav-slider">
+                    <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                    <div class="nav-item" role="presentation">
+                    <button class="nav-link active" id="v-pills-img1-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-img1" type="button" role="tab" aria-controls="v-pills-img1" aria-selected="true">
+                    <img src="../../assets/img/inner-pages/auction-details-img1.jpg" alt="">
+                    </button>
                     </div>
+                    </div>
+                    <div class="swiper-slide">
+                    <div class="nav-item" role="presentation">
+                    <button class="nav-link" id="v-pills-img2-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-img2" type="button" role="tab" aria-controls="v-pills-img2"
+                    aria-selected="false">
+                    <img src="../../assets/img/inner-pages/auction-details-img2.jpg" alt="">
+                    </button>
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                    <div class="nav-item" role="presentation">
+                    <button class="nav-link" id="v-pills-img3-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-img3" type="button" role="tab" aria-controls="v-pills-img3"
+                    aria-selected="false">
+                    <img src="../../assets/img/inner-pages/auction-details-img3.jpg" alt="">
+                    </button>
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                    <div class="nav-item" role="presentation">
+                    <button class="nav-link" id="v-pills-img4-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-img4" type="button" role="tab" aria-controls="v-pills-img4"
+                    aria-selected="false">
+                    <img src="../../assets/img/inner-pages/auction-details-img4.jpg" alt="">
+                    </button>
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                    <div class="nav-item" role="presentation">
+                    <button class="nav-link" id="v-pills-img5-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-img5" type="button" role="tab" aria-controls="v-pills-img5"
+                    aria-selected="false">
+                    <img src="../../assets/img/inner-pages/auction-details-img5.jpg" alt="">
+                    </button>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div> *@
                 </div>
             </div>
             <div class="col-xl-5">
                 <div class="auction-details-content">
                     <div class="batch">
-                        <span>Lot: # 25896742</span>
+                        <span>Lot: # @Model.SKU</span>
                     </div>
-                    <h1>Zenith Auto Elevating Driving Your Automotive Experience</h1>
-                    <p>Aptent tacit sociosq  litor torquen per conubia nostra, per incep placerat felis non aliquam.Mauris nec justo vitae ante auctor.</p>
+                    <h1>@Model.Name</h1>
                     <div class="price-area">
                         <span>Current Bid at:</span>
-                        <strong>$2,898</strong>
+                        <strong>$@Model.CurrentBiddingPrice</strong>
                     </div>
                     <div class="coundown-area">
                         <h6>Auction Will Be End:</h6>
                         <div class="countdown-timer">
-                            <ul data-countdown="2024-08-24 12:00:00">
+                            <ul data-countdown="@Model.EndDate">
                                 <li data-days="00">80 <span>Days</span> <span>Days</span></li>
                                 <li class="clone">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="4" height="13" viewBox="0 0 4 13">
@@ -145,7 +146,7 @@
                                 <li data-seconds="00">17 <span>Sec</span> <span>Seconds</span></li>
                             </ul>
                         </div>
-                        <span><strong>Ending On:</strong> August 22, 2024 11:42 am</span>
+                        <span><strong>Ending On:</strong> @Model.EndDate.ToString("MM-dd-yyyy")</span>
                     </div>
                     <div class="quantity-area">
                         <h6>Your Max Bid:</h6>
@@ -202,60 +203,8 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                 <div class="description-content">
-                                    <h3>They’re kinda our Best thing!</h3>
-                                    <p>Urna Aenean onewaryzo eleifend vitae tellus a facilisis. Nunc posuere at augue eget port. Inei odion goat tellus, dignissim fermentumara purus nec, consequat dapibus metus. Vav urna worlda mauris, goat te faucibus at egestas quis, fermentum egetonav neque. Dphare lectus nec risusonl pellentesque, opi vitae aliquet nisi dapibus. Sed volutpat mi velit.</p>
-                                    <p>Urna Aenean onewaryzo eleifend vitae tellus a facilisis. Nunc posuere at augue eget port. Inei odion goat tellus, dignissim fermentumara purus nec,</p>
-                                    <ul>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Paraben-Free
-                                        </li>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Sulfate-Free
-                                        </li>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Clean at Sephora
-                                        </li>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Clean at Sephora
-                                        </li>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Fragrance Free
-                                        </li>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Cruelty-Free
-                                        </li>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Antioxidants
-                                        </li>
-                                        <li>
-                                            <svg width="13" height="11" viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.2986 0.0327999C9.89985 0.832756 6.86143 2.97809 4.03623 6.6688L2.36599 4.778C2.09946 4.4871 1.63748 4.4871 1.38872 4.778L0.162693 6.17792C-0.0682981 6.45063 -0.0505298 6.86879 0.19823 7.12332L3.96516 10.814C4.28499 11.1231 4.78251 11.0322 4.99574 10.6504C7.00358 6.92333 9.17134 4.15985 12.7961 0.996384C13.2581 0.596406 12.8672 -0.167189 12.2986 0.0327999Z" />
-                                            </svg>
-                                            Antioxidants
-                                        </li>
-                                    </ul>
-                                    <p>Urna Aenean onewaryzo eleifend vitae tellus a facilisis. Nunc posuere at augue eget port. Inei odion goat tellus, dignissim fermentumara purus nec, consequat dapibus metus. Vav urna worlda mauris, goat te faucibus at egestas quis, fermentum egetonav neque. Dphare lectus nec risusonl pellentesque, opi vitae aliquet nisi dapibus. Sed volutpat mi velit.</p>
+                                    <h3>Description</h3>
+                                    <p>@Model.Description</p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-add-info" role="tabpanel" aria-labelledby="nav-add-info-tab">
@@ -264,27 +213,27 @@
                                         <tbody>
                                             <tr>
                                                 <td><span>SKU</span></td>
-                                                <td>123ABC</td>
+                                                <td>@Model.SKU</td>
                                             </tr>
                                             <tr>
                                                 <td><span>Category</span></td>
-                                                <td>Car</td>
+                                                <td>@Model.Categoryname</td>
                                             </tr>
                                             <tr>
                                                 <td><span>Tags</span></td>
-                                                <td>Car, Digital Art, Book</td>
+                                                <td>@Model.Tags</td>
                                             </tr>
                                             <tr>
                                                 <td><span>Weight</span></td>
-                                                <td>20 gm</td>
+                                                <td>@Model.Weight</td>
                                             </tr>
                                             <tr>
                                                 <td><span>Dimensions</span></td>
-                                                <td>2 × 4 × 5 cm</td>
+                                                <td>@Model.Dimensions</td>
                                             </tr>
                                             <tr>
                                                 <td><span>Brand</span></td>
-                                                <td>BMW </td>
+                                                <td>@Model.Brand </td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -17,12 +17,12 @@ namespace UI.Controllers
 
             return View(res);
         }
-        public IActionResult Details(int id)
+        [HttpGet("Category/CategoryAuctions/{CategoryId}")]
+        public IActionResult CategoryAuctions(int CategoryId)
         {
-            var data = _service.GetById(id);
-            if (data == null)
-                return RedirectToAction("Index", "Home");
-            return View(data);
+            var res = _service.GetAuctions(CategoryId);
+
+            return View(res);
         }
     }
 }
