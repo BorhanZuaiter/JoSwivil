@@ -3,23 +3,6 @@
     ViewData["Title"] = "DashboardSettings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!-- Start Breadcrumb section -->
-<div class="breadcrumb-section" style="background-image: url(../assets/img/inner-pages/breadcrumb-bg1.png), linear-gradient(87.29deg, #FDF8E7 0%, #E4FFF0 99.71%);">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 d-flex justify-content-center">
-                <div class="banner-content">
-                    <h1>Profile</h1>
-                    <ul class="breadcrumb-list">
-                        <li><a href="/Home/Index">Home</a></li>
-                        <li>Profile </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Breadcrumb section -->
 <!-- Start Dashboard section -->
 <div class="dashboard-section pt-110 mb-110">
     <div class="container">
@@ -27,23 +10,6 @@
             @await Html.PartialAsync("~/Views/Account/_DashboardSideBar.cshtml")
             <div class="dashboard-content-wrap two">
                 <div class="settings-wrap">
-                    <div class="edit-info-area mb-30">
-                        <h6>Edit Your Profile Picture</h6>
-                        <div class="edit-profile-img-area">
-                            <div class="profile-img">
-                                <img src="assets/img/inner-pages/dashbaord-edit-profile-img.png" alt="">
-                            </div>
-                            <div class="upload-img-area">
-                                <h6>Upload Your Image</h6>
-                                <form>
-                                    <div class="upload-filed">
-                                        <input type="file">
-                                    </div>
-                                </form>
-                                <span>JPEG 100 x 100</span>
-                            </div>
-                        </div>
-                    </div>
                     <div class="edit-info-area">
                         <h6>Edit Your Information</h6>
                         <form class="edit-info-form">
@@ -72,10 +38,6 @@
                                             <label>Email Address</label>
                                             <input type="email" placeholder="shimanto.nits@gmail.com">
                                         </div>
-                                        <button class="primary-btn btn-hover two black-bg">
-                                            Verify Email
-                                            <span></span>
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-60">
@@ -84,10 +46,6 @@
                                             <label>Phone Number</label>
                                             <input type="text" placeholder="+880 179 671 3831">
                                         </div>
-                                        <button class="primary-btn btn-hover two black-bg">
-                                            Verify Phone
-                                            <span></span>
-                                        </button>
                                     </div>
                                 </div>
                             </div>

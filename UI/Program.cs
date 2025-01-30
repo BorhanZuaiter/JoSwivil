@@ -2,6 +2,7 @@ using Domain;
 using Domain.Common;
 using Domain.Entities;
 using Domain.Helpers;
+using Domain.Services.UIServices.AccountService;
 using Domain.Services.UIServices.AuctionService;
 using Domain.Services.UIServices.CategoryService;
 using Domain.Services.UIServices.HomeService;
@@ -44,6 +45,7 @@ builder.Services.AddTransient<INewsService, NewsService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<ISellerService, SellerService>();
 builder.Services.AddTransient<IAuctionService, AuctionService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddTransient<StorageConnection>();
 
