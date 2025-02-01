@@ -80,10 +80,5 @@ namespace UI.Controllers
         {
             return View();
         }
-
-        public IActionResult DashboardSettings()
-        {
-            return View();
-        }
     }
 }
