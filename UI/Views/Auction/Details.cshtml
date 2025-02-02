@@ -119,7 +119,7 @@
                     <h1>@Model.Name</h1>
                     <div class="price-area">
                         <span>Current Bid at:</span>
-                        <strong>$@Model.CurrentBiddingPrice</strong>
+                        <strong id="bid-@Model.Id">$@Model.CurrentBiddingPrice</strong>
                     </div>
                     <div class="coundown-area">
                         <h6>Auction Will Be End:</h6>
@@ -152,14 +152,12 @@
                         <h6>Your Max Bid:</h6>
                         <div class="quantity-counter-and-btn-area">
                             <div class="quantity-counter">
-                                <a href="#" class="quantity__minus"><i class='bx bx-minus'></i></a>
-                                <input name="quantity" type="text" class="quantity__input" value="2900">
-                                <a href="#" class="quantity__plus"><i class='bx bx-plus'></i></a>
+                                <input class="quantity__input"  id="newBid-@Model.Id" value="@Model.CurrentBiddingPrice" placeholder="Enter your bid">
                             </div>
-                            <a class="primary-btn btn-hover" href="#">
+                            <button class="primary-btn btn-hover" onclick="placeBid(@Model.Id)">
                                 Place Bid
                                 <span></span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="payment-method">
@@ -247,3 +245,41 @@
     </div>
 </div>
 <!-- End Auction Details section -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/auctionHub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    connection.start().then(() => {
+        console.log("Connected to AuctionHub");
+    }).catch(err => console.error("SignalR Connection Error: ", err));
+
+    // Listen for bid updates
+    connection.on("ReceiveBidUpdate", (itemId, newBid) => {
+        console.log(`New bid for item ${itemId}: ${newBid}`);
+
+        const bidElement = document.getElementById(`bid-${itemId}`);
+        if (bidElement) {
+            bidElement.innerText = `$${newBid.toFixed(2)}`;
+        }
+    });
+
+    // Function to send a new bid
+    function placeBid(itemId) {
+        const inputField = document.getElementById(`newBid-${itemId}`);
+        if (!inputField) {
+            console.error("Bid input field not found.");
+            return;
+        }
+
+        const newBid = parseFloat(inputField.value);
+        if (!isNaN(newBid) && newBid > 0) {
+            connection.invoke("UpdateBid", itemId, newBid)
+                .catch(err => console.error("Error placing bid: ", err));
+        } else {
+            alert("Please enter a valid bid amount.");
+        }
+    }
+</script>

@@ -78,5 +78,18 @@ namespace Domain.Services.UIServices.AuctionService
             }).FirstOrDefault();
             return res;
         }
+        public bool UpdateBid(int itemId, double newBid)
+        {
+            var item = _db.Items.FirstOrDefault(i => i.Id == itemId && !i.IsDeleted);
+            if (item == null || newBid <= item.CurrentBiddingPrice)
+            {
+                return false; // Bid should be higher than the current bid
+            }
+
+            item.CurrentBiddingPrice = newBid;
+            _db.SaveChanges();
+            return true;
+        }
+
     }
 }

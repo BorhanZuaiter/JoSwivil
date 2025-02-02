@@ -7,5 +7,6 @@ namespace Domain.Services.UIServices.AuctionService
         List<ItemDto> GetAuctions();
         ItemDto GetById(int id);
         List<ItemDto> GetHomeAuctions();
+        bool UpdateBid(int itemId, double newBid);
     }
 }
