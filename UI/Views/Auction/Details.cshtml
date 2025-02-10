@@ -34,81 +34,6 @@
                             </div>
                         </div>
                     </div>
-                    @*  <div class="tab-pane fade" id="v-pills-img2" role="tabpanel">
-                    <div class="auction-details-tab-img">
-                    <img src="../../assets/img/inner-pages/auction-details-img2.jpg" alt="">
-                    </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-img3" role="tabpanel"
-                    aria-labelledby="v-pills-img3-tab">
-                    <div class="auction-details-tab-img">
-                    <img src="../../assets/img/inner-pages/auction-details-img3.jpg" alt="">
-                    </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-img4" role="tabpanel"
-                    aria-labelledby="v-pills-img4-tab">
-                    <div class="auction-details-tab-img">
-                    <img src="../../assets/img/inner-pages/auction-details-img4.jpg" alt="">
-                    </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-img5" role="tabpanel"
-                    aria-labelledby="v-pills-img5-tab">
-                    <div class="auction-details-tab-img">
-                    <img src="../../assets/img/inner-pages/auction-details-img5.jpg" alt="">
-                    </div>
-                    </div>
-                    </div>
-                    <div class="nav nav-pills" id="v-pills-tab" role="tablist"
-                    aria-orientation="vertical">
-                    <div class="swiper auction-details-nav-slider">
-                    <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                    <div class="nav-item" role="presentation">
-                    <button class="nav-link active" id="v-pills-img1-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-img1" type="button" role="tab" aria-controls="v-pills-img1" aria-selected="true">
-                    <img src="../../assets/img/inner-pages/auction-details-img1.jpg" alt="">
-                    </button>
-                    </div>
-                    </div>
-                    <div class="swiper-slide">
-                    <div class="nav-item" role="presentation">
-                    <button class="nav-link" id="v-pills-img2-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-img2" type="button" role="tab" aria-controls="v-pills-img2"
-                    aria-selected="false">
-                    <img src="../../assets/img/inner-pages/auction-details-img2.jpg" alt="">
-                    </button>
-                    </div>
-                    </div>
-                    <div class="swiper-slide">
-                    <div class="nav-item" role="presentation">
-                    <button class="nav-link" id="v-pills-img3-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-img3" type="button" role="tab" aria-controls="v-pills-img3"
-                    aria-selected="false">
-                    <img src="../../assets/img/inner-pages/auction-details-img3.jpg" alt="">
-                    </button>
-                    </div>
-                    </div>
-                    <div class="swiper-slide">
-                    <div class="nav-item" role="presentation">
-                    <button class="nav-link" id="v-pills-img4-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-img4" type="button" role="tab" aria-controls="v-pills-img4"
-                    aria-selected="false">
-                    <img src="../../assets/img/inner-pages/auction-details-img4.jpg" alt="">
-                    </button>
-                    </div>
-                    </div>
-                    <div class="swiper-slide">
-                    <div class="nav-item" role="presentation">
-                    <button class="nav-link" id="v-pills-img5-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-img5" type="button" role="tab" aria-controls="v-pills-img5"
-                    aria-selected="false">
-                    <img src="../../assets/img/inner-pages/auction-details-img5.jpg" alt="">
-                    </button>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div> *@
                 </div>
             </div>
             <div class="col-xl-5">
@@ -152,7 +77,9 @@
                         <h6>Your Max Bid:</h6>
                         <div class="quantity-counter-and-btn-area">
                             <div class="quantity-counter">
-                                <input class="quantity__input"  id="newBid-@Model.Id" value="@Model.CurrentBiddingPrice" placeholder="Enter your bid">
+                                <input class="quantity__input" id="newBid-@Model.Id"
+                                       value="@(Model.CurrentBiddingPrice + 1)"
+                                       placeholder="Enter your bid">
                             </div>
                             <button class="primary-btn btn-hover" onclick="placeBid(@Model.Id)">
                                 Place Bid
