@@ -1,4 +1,7 @@
 ﻿@using Domain.DTO.UIDtos
+@using Domain.Entities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
 @model ItemDto
 @{
     ViewData["Title"] = "Details";
@@ -74,19 +77,37 @@
                         <span><strong>Ending On:</strong> @Model.EndDate.ToString("MM-dd-yyyy")</span>
                     </div>
                     <div class="quantity-area">
-                        <h6>Your Max Bid:</h6>
-                        <div class="quantity-counter-and-btn-area">
-                            <div class="quantity-counter">
-                                <input class="quantity__input" id="newBid-@Model.Id"
-                                       value="@(Model.CurrentBiddingPrice + 1)"
-                                       placeholder="Enter your bid">
-                            </div>
-                            <button class="primary-btn btn-hover" onclick="placeBid(@Model.Id)">
-                                Place Bid
+                        @if (Model.EndDate < DateTime.Now) 
+                        {
+                            <a class="primary-btn btn-hover">
+                                Auction Ended
                                 <span></span>
-                            </button>
-                        </div>
+                            </a>
+                        }
+                        else if (SignInManager.IsSignedIn(User)) 
+                        {
+                            <h6>Your Max Bid:</h6>
+                            <div class="quantity-counter-and-btn-area">
+                                <div class="quantity-counter">
+                                    <input class="quantity__input" id="newBid-@Model.Id"
+                                           value="@(Model.CurrentBiddingPrice + 1)"
+                                           placeholder="Enter your bid">
+                                </div>
+                                <button class="primary-btn btn-hover" onclick="placeBid(@Model.Id)">
+                                    Place Bid
+                                    <span></span>
+                                </button>
+                            </div>
+                        }
+                        else 
+                        {
+                            <a href="/Account/Login" class="primary-btn btn-hover">
+                                Login to Bid
+                                <span></span>
+                            </a>
+                        }
                     </div>
+
                     <div class="payment-method">
                         <h6>Guaranted Safe Checkout</h6>
                         <ul class="payment-card-list">
@@ -193,9 +214,9 @@
         }
     });
 
-    // Function to send a new bid
+     // Function to send a new bid
     function placeBid(itemId) {
-        const inputField = document.getElementById(`newBid-${itemId}`);
+        const inputField = document.getElementById(newBid-${itemId});
         if (!inputField) {
             console.error("Bid input field not found.");
             return;

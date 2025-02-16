@@ -24,10 +24,17 @@ namespace UI.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
-            if (await _accountService.RegisterUserAsync(model)) return RedirectToAction("Login");
+
+            if (await _accountService.RegisterUserAsync(model))
+            {
+                TempData["RegistrationSuccess"] = "You have been registered successfully! Redirecting to login...";
+                return RedirectToAction("Login");
+            }
+
             ModelState.AddModelError("", "Registration failed");
             return View(model);
         }
+
         public IActionResult Register()
         {
             return View();
@@ -68,14 +75,11 @@ namespace UI.Controllers
             ModelState.AddModelError("", result.Message);
             return View("DashboardChangePassword", model);
         }
-
         public async Task<IActionResult> Logout()
         {
             await _accountService.LogoutUserAsync();
             return RedirectToAction("Login");
         }
-
-
         public IActionResult DashboardMyAuctions()
         {
             return View();

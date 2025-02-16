@@ -21,6 +21,9 @@ namespace Domain.Services.UIServices.AccountService
         {
             var user = new User
             {
+                FullName = "User",
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 UserName = model.Email,
                 Email = model.Email,
                 NormalizedEmail = model.Email.ToUpper()  // Ensure email is stored properly
