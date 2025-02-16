@@ -214,9 +214,9 @@
         }
     });
 
-     // Function to send a new bid
+    // Function to send a new bid
     function placeBid(itemId) {
-        const inputField = document.getElementById(newBid-${itemId});
+        const inputField = document.getElementById(`newBid-${itemId}`);
         if (!inputField) {
             console.error("Bid input field not found.");
             return;
@@ -231,3 +231,4 @@
         }
     }
 </script>
+
