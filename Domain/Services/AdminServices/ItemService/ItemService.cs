@@ -24,7 +24,8 @@ namespace Domain.Services.AdminServices.ItemService
                 {
                     Id = r.Id,
                     Name = r.Name,
-                    Price = r.Price,
+                    CurrentBiddingPrice = r.CurrentBiddingPrice,
+                    Description = r.Description,
                     StartDate = r.StartDate,
                     EndDate = r.EndDate,
                 }).ToQueryResult(model.PageNumber, model.PageSize);
