@@ -38,7 +38,7 @@ namespace Domain.Services.UIServices.SellerService
                 IdImageUrl = a.IdImageUrl,
                 Bio = a.Bio,
                 Email = a.Email,
-                Items = a.Items.Select(s => new ItemDto
+                Items = a.Items.Where(s => !s.IsDeleted).Select(s => new ItemDto
                 {
                     Id = s.Id,
                     Name = s.Name,
