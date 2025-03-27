@@ -1,18 +1,15 @@
 ﻿using Domain.Services.UIServices.AuctionService;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 
 namespace UI.Controllers
 {
     public class AuctionController : Controller
     {
-        private readonly IAuctionService _service;
-        private readonly IHubContext<AuctionHub> _hubContext;
+        private readonly ITripsService _service;
 
-        public AuctionController(IAuctionService service, IHubContext<AuctionHub> hubContext)
+        public AuctionController(ITripsService service)
         {
             _service = service;
-            _hubContext = hubContext;
         }
 
         public IActionResult Index()
@@ -29,17 +26,5 @@ namespace UI.Controllers
             return View(data);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> PlaceBid(int itemId, double bidAmount)
-        {
-            var success = _service.UpdateBid(itemId, bidAmount);
-            if (success)
-            {
-                // Notify all users about the updated bid via SignalR
-                await _hubContext.Clients.All.SendAsync("ReceiveBidUpdate", itemId, bidAmount);
-                return Ok(new { success = true, newBid = bidAmount });
-            }
-            return BadRequest(new { success = false, message = "Bid placement failed" });
-        }
     }
 }

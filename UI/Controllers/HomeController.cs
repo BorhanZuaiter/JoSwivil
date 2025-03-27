@@ -12,10 +12,10 @@ namespace UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHomeService _service;
-        private readonly IAuctionService _auctionService;
-        private readonly ICategoryService _categoryService;
+        private readonly ITripsService _auctionService;
+        private readonly IRouteService _categoryService;
 
-        public HomeController(ILogger<HomeController> logger, IHomeService service, IAuctionService auction, ICategoryService category)
+        public HomeController(ILogger<HomeController> logger, IHomeService service, ITripsService auction, IRouteService category)
         {
             _logger = logger;
             _service = service;
@@ -26,7 +26,7 @@ namespace UI.Controllers
         public IActionResult Index()
         {
             var Auctions = _auctionService.GetHomeAuctions();
-            var Categories = _categoryService.GetHomecategories();
+            var Categories = _categoryService.GetHomeRoutes();
             var data = new HomeDto { Auction = Auctions, Category = Categories };
             return View(data);
 

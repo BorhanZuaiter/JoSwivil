@@ -4,10 +4,10 @@
     {
         public HomeDto()
         {
-            Auction = new List<ItemDto>();
-            Category = new List<CategoryDto>();
+            Auction = new List<TripsDto>();
+            Category = new List<RouteDto>();
         }
-        public ICollection<ItemDto> Auction { get; set; }
-        public ICollection<CategoryDto> Category { get; set; }
+        public ICollection<TripsDto> Auction { get; set; }
+        public ICollection<RouteDto> Category { get; set; }
     }
 }

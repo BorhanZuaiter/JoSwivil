@@ -5,15 +5,15 @@ namespace UI.Controllers
 {
     public class SellerController : Controller
     {
-        private readonly ISellerService _service;
+        private readonly IDriverService _service;
 
-        public SellerController(ISellerService service)
+        public SellerController(IDriverService service)
         {
             _service = service;
         }
         public IActionResult Index()
         {
-            var res = _service.GetCategory();
+            var res = _service.GetDrivers();
 
             return View(res);
         }

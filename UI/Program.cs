@@ -5,8 +5,8 @@ using Domain.Helpers;
 using Domain.Services.UIServices.AccountService;
 using Domain.Services.UIServices.AuctionService;
 using Domain.Services.UIServices.CategoryService;
+using Domain.Services.UIServices.Driverervice;
 using Domain.Services.UIServices.HomeService;
-using Domain.Services.UIServices.NewsService;
 using Domain.Services.UIServices.SellerService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -45,10 +45,9 @@ builder.Services.AddSignalR();
 
 // Register other services
 builder.Services.AddTransient<IHomeService, HomeService>();
-builder.Services.AddTransient<INewsService, NewsService>();
-builder.Services.AddTransient<ICategoryService, CategoryService>();
-builder.Services.AddTransient<ISellerService, SellerService>();
-builder.Services.AddTransient<IAuctionService, AuctionService>();
+builder.Services.AddTransient<IRouteService, RouteService>();
+builder.Services.AddTransient<IDriverService, DriverService>();
+builder.Services.AddTransient<ITripsService, TripsService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddTransient<StorageConnection>();
@@ -70,7 +69,6 @@ app.UseAuthorization();
 // Map SignalR Hub
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapHub<AuctionHub>("/auctionHub");
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");

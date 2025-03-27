@@ -95,11 +95,10 @@ namespace Domain
 
             return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Route> Route { get; set; }
         public DbSet<FAQ> FAQs { get; set; }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<News> News { get; set; }
-        public DbSet<Seller> Sellers { get; set; }
+        public DbSet<Trips> Trips { get; set; }
+        public DbSet<Driver> Driver { get; set; }
         public DbSet<Feedback> Feedback { get; set; }
     }
 }

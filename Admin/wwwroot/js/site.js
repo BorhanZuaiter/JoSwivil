@@ -108,37 +108,37 @@ function HideLoadingButton(buttonId, loadingButtonId) {
         loadingButton.classList.add('d-none');
     }
 }
-function GetCategories(index) {
+function GetRoutes(index) {
     $.ajax({
-        url: '/Category/GetDDL',
+        url: '/Route/GetDDL',
         type: 'Get',
         success: function (datareturn) {
-            $("#CategoryId option").remove();
-            $("#CategoryId").append($("<option/>").val(0).text("اختر الفئة"));
+            $("#RouteId option").remove();
+            $("#RouteId").append($("<option/>").val(0).text("اختر  المسار"));
             $.each(datareturn, function () {
                 if (this.id == index) {
-                    $("#CategoryId").append($("<option/>").val(this.id).text(this.name).attr('selected', 'selected'));
+                    $("#RouteId").append($("<option/>").val(this.id).text(this.name).attr('selected', 'selected'));
                 }
                 else {
-                    $("#CategoryId").append($("<option/>").val(this.id).text(this.name));
+                    $("#RouteId").append($("<option/>").val(this.id).text(this.name));
                 }
             });
         }
     });
 }
-function GetSellers(index) {
+function GetSDrivers(index) {
     $.ajax({
-        url: '/Seller/GetDDL',
+        url: '/Driver/GetDDL',
         type: 'Get',
         success: function (datareturn) {
-            $("#SellerId option").remove();
-            $("#SellerId").append($("<option/>").val(0).text("اختر التاجر"));
+            $("#DriverId option").remove();
+            $("#DriverId").append($("<option/>").val(0).text("اختر السائق"));
             $.each(datareturn, function () {
                 if (this.id == index) {
-                    $("#SellerId").append($("<option/>").val(this.id).text(this.name).attr('selected', 'selected'));
+                    $("#DriverId").append($("<option/>").val(this.id).text(this.name).attr('selected', 'selected'));
                 }
                 else {
-                    $("#SellerId").append($("<option/>").val(this.id).text(this.name));
+                    $("#DriverId").append($("<option/>").val(this.id).text(this.name));
                 }
             });
         }

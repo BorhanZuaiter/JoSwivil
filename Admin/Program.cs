@@ -3,12 +3,13 @@ using Domain.Common;
 using Domain.Entities;
 using Domain.Helpers;
 using Domain.Services.AdminServices.CategoryService;
+using Domain.Services.AdminServices.Driverervice;
 using Domain.Services.AdminServices.FAQService;
 using Domain.Services.AdminServices.Feedbackervice;
 using Domain.Services.AdminServices.FeedbackService;
 using Domain.Services.AdminServices.ItemService;
-using Domain.Services.AdminServices.NewsService;
 using Domain.Services.AdminServices.SellerService;
+using Domain.Services.AdminServices.Tripservice;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,11 +43,10 @@ options =>
 .AddEntityFrameworkStores<VODContext>()
 .AddDefaultTokenProviders();
 builder.Services.AddTransient<IFAQService, FAQService>();
-builder.Services.AddTransient<ICategoryService, CategoryService>();
-builder.Services.AddTransient<IItemService, ItemService>();
-builder.Services.AddTransient<ISellerService, SellerService>();
-builder.Services.AddTransient<INewsService, NewsService>();
-builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IRouteService, RouteService>();
+builder.Services.AddTransient<ITripsService, TripsService>();
+builder.Services.AddTransient<IDriverService, DriverService>();
+builder.Services.AddTransient<IRouteService, RouteService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<IFeedbackService, Feedbackervice>();
 builder.Services.AddTransient<StorageConnection>();
