@@ -1,6 +1,6 @@
 ﻿@model Domain.DTO.AdminDtos.DriverDto
 @{
-    ViewData["Title"] = "انشاء تاجر جديد";
+    ViewData["Title"] = "انشاء سائق جديد";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var controller = this.ViewContext.RouteData.Values["controller"].ToString();
 }
@@ -26,13 +26,28 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
+                            <label class="form-label">كلمة المرور</label>
+                            <input type="text" name="Password" id="Password" class="form-control" placeholder="ادخل كلمة المرور">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color:red">*</label>
                             <label class="form-label">رقم الهاتف</label>
-                            <input type="text" name="PhoneNumber" id="PhoneNumber" class="form-control" placeholder="ادخل رقم الهاتف">
+                            <input type="number" name="PhoneNumber" id="PhoneNumber" class="form-control" placeholder="ادخل رقم الهاتف">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
                             <label class="form-label">العنوان</label>
                             <input type="text" class="form-control" name="Address" id="Address" placeholder="ادخل العنوان" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color:red">*</label>
+                            <label class="form-label">نوع السيارة</label>
+                            <input type="text" class="form-control" name="car" id="car" placeholder="ادخل نوع السيارة" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color:red">*</label>
+                            <label class="form-label">رقم اللوحة</label>
+                            <input type="text" class="form-control" name="PlateNumber" id="PlateNumber" placeholder="ادخل رقم اللوحة" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
@@ -73,6 +88,9 @@
         var Address = $('#Address').val();
         var RouteId = $('#RouteId').val();
         var PhoneNumber = $('#PhoneNumber').val();
+        var Password = $('#Password').val();
+        var Car = $('#Car').val();
+        var PlateNumber = $('#PlateNumber').val();
         var ProfileImage = document.getElementById("ProfileImage").files;
         var IdImage = document.getElementById("IdImage").files;
 
@@ -89,6 +107,9 @@
         formData.append("Address", Address);
         formData.append("RouteId", RouteId);
         formData.append("PhoneNumber", PhoneNumber);
+        formData.append("Password", Password);
+        formData.append("Car", Car);
+        formData.append("PlateNumber", PlateNumber);
         formData.append("ProfileImage", ProfileImage[0]);
         formData.append("IdImage", IdImage[0]);
 

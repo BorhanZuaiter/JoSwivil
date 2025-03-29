@@ -1,0 +1,24 @@
+﻿@{
+    var controller = this.ViewContext.RouteData.Values["controller"].ToString();
+}
+<div class="modal fade" id="deleteConfirm" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="modalCenterTitle">هل انت متأكد من عملية الحذف ؟</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                <button type="button" class="btn btn-danger d-inline deleteButton" onclick="Delete('@controller')">حذف</button>
+                <button class="btn btn-danger d-none deleteLoadingButton" type="button" disabled>
+                    <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
+                    جاري الحذف ...
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

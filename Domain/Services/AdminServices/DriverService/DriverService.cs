@@ -27,6 +27,8 @@ namespace Domain.Services.AdminServices.Driverervice
                     Name = r.Name,
                     Email = r.Email,
                     PhoneNumber = r.PhoneNumber,
+                    Car = r.Car,
+                    PlateNumber = r.PlateNumber,
                 }).ToQueryResult(model.PageNumber, model.PageSize);
             return res;
         }
@@ -38,6 +40,9 @@ namespace Domain.Services.AdminServices.Driverervice
             obj.Address = input.Address;
             obj.PhoneNumber = input.PhoneNumber;
             obj.RouteId = input.RouteId;
+            obj.PlateNumber = input.PlateNumber;
+            obj.Car = input.Car;
+            obj.Password = input.Password;
 
             if (input.ProfileImage is not null)
                 obj.ProfileImageUrl = await _storageConnection.SaveOnStorage(input.ProfileImage, "Driver");
@@ -62,7 +67,9 @@ namespace Domain.Services.AdminServices.Driverervice
                 IdImageUrl = a.IdImageUrl,
                 ProfileImageUrl = a.ProfileImageUrl,
                 RouteId = a.RouteId,
-
+                Car = a.Car,
+                PlateNumber = a.PlateNumber,
+                Password = a.Password,
             }).FirstOrDefault();
             return obj;
         }
@@ -74,7 +81,9 @@ namespace Domain.Services.AdminServices.Driverervice
             obj.Address = input.Address;
             obj.PhoneNumber = input.PhoneNumber;
             obj.RouteId = input.RouteId;
-
+            obj.PlateNumber = input.PlateNumber;
+            obj.Car = input.Car;
+            obj.Password = input.Password;
             if (input.ProfileImage is not null)
                 obj.ProfileImageUrl = await _storageConnection.SaveOnStorage(input.ProfileImage, "Driver");
 

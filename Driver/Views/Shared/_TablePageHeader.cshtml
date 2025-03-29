@@ -1,0 +1,30 @@
+﻿@using Domain.Common
+@using System.Security.Claims
+@model TablePageHeader
+@{
+    var controller = this.ViewContext.RouteData.Values["controller"].ToString();
+    var role = Context.User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).FirstOrDefault();
+
+}
+<div class="d-flex justify-content-evenly text-center mx-5" style="align-items: center;">
+    <h5 class="card-header">@ViewData["Title"]</h5>
+    {
+        @if (Model.HasCreateButton)
+        {
+            <a class="btn btn-primary text-white text-center" href="/@controller/Create" style="text-align: center; height:40px">اضافة جديد</a>
+        }
+        @if (Model.HasDownloadButton)
+        {
+            <a class="btn btn-primary text-white text-center" href="/@controller/Create" style="text-align: center; height:40px">استخراج المعلومات</a>
+        }
+        @if (Model.HasEditGroup)
+        {
+            <a class="btn btn-primary text-white text-center" href="/@controller/EditGroup" style="text-align: center; height:40px">تعديل مجموعة</a>
+        }
+    <div class="navbar-nav align-items-center">
+        <div class="nav-item d-flex align-items-center">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="ser" value="@Model.Search" />
+            <a class="btn btn-outline-primary" onclick="Search('@controller')">Search</a>
+        </div>
+    </div>
+</div>

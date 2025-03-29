@@ -24,6 +24,7 @@ namespace Domain.Services.AdminServices.CategoryService
                 {
                     Id = r.Id,
                     Name = r.Name,
+                    Price = r.Price,
                 }).ToQueryResult(model.PageNumber, model.PageSize);
             return res;
         }
@@ -31,6 +32,7 @@ namespace Domain.Services.AdminServices.CategoryService
         {
             var obj = new Route();
             obj.Name = input.Name;
+            obj.Price = input.Price;
             if (input.PrivewImage is not null)
                 obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Category");
 
@@ -45,6 +47,7 @@ namespace Domain.Services.AdminServices.CategoryService
             {
                 Id = a.Id,
                 Name = a.Name,
+                Price = a.Price,
 
             }).FirstOrDefault();
             return obj;
@@ -53,6 +56,7 @@ namespace Domain.Services.AdminServices.CategoryService
         {
             var obj = _db.Route.Where(r => r.Id == input.Id).FirstOrDefault();
             obj.Name = input.Name;
+            obj.Price = input.Price;
             if (input.PrivewImage is not null)
                 obj.PrivewImageUrl = await _storageConnection.SaveOnStorage(input.PrivewImage, "Category");
 
