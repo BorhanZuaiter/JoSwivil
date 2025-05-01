@@ -13,7 +13,6 @@
                     <tr>
                         <th>الاسم</th>
                         <th>السعر</th>
-                        <th>الاجراءات</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -24,7 +23,7 @@
                             <td><strong>@item.Price</strong></td>
                             <td class="align-middle">
                                 @await Html.PartialAsync("~/Views/Shared/_Procedures.cshtml",
-                                         new ProceduresButtons { HasDelete = true, HasEdit = true, Id = item.Id.ToString() })
+                                         new ProceduresButtons { HasDelete = false, HasEdit = false, Id = item.Id.ToString() })
                             </td>
                         </tr>
                     }

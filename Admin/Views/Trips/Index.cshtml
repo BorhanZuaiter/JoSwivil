@@ -6,13 +6,14 @@
 }
 <div id="app">
     <div class="card">
-        @await Html.PartialAsync("~/Views/Shared/_TablePageHeader.cshtml", new TablePageHeader(Model.Search, false))
+        @await Html.PartialAsync("~/Views/Shared/_TablePageHeader.cshtml", new TablePageHeader(Model.Search, true))
         <div class="table-responsive text-nowrap">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>الاسم</th>
-                        <th>الوصف</th>
+                        <th>السائق</th>
+                        <th>الرحلة</th>
                         <th>السعر</th>
                         <th>الاجراءات</th>
                     </tr>
@@ -24,6 +25,7 @@
                             <td><strong>@item.Name</strong></td>
                             <td><strong>@item.DriverName</strong></td>
                             <td><strong>@item.RouteName</strong></td>
+                            <td><strong>@item.Price</strong></td>
                             <td class="align-middle">
                                 @await Html.PartialAsync("~/Views/Shared/_Procedures.cshtml",
                                          new ProceduresButtons { HasDelete = true, HasEdit = true, Id = item.Id.ToString() })

@@ -4,8 +4,8 @@ namespace Domain.Services.UIServices.AuctionService
 {
     public interface ITripsService
     {
-        List<TripsDto> GetAuctions();
-        TripsDto GetById(int id);
-        List<TripsDto> GetHomeAuctions();
+        List<TripsDto> GetTrips();
+        bool ReserveTrip(int Id, string userId);
+        bool Cancel(int Id, string userId);
     }
 }

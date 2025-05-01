@@ -27,6 +27,33 @@ namespace Admin.Controllers
             res.Search = model.Search;
             return View(res);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(TripsDto data)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var res = await _service.Create(data, user.Id);
+            if (res)
+                return Json(new { status = true });
+            return Json(new { status = false, message = "حدث خطأ ما" });
+        }
+        public IActionResult Edit(int Id)
+        {
+            var res = _service.GetById(Id);
+            return View(res);
+        }
+        [HttpPut]
+        public async Task<IActionResult> Edit(TripsDto data)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var res = await _service.Edit(data, user.Id);
+            if (res)
+                return Json(new { status = true });
+            return Json(new { status = false, message = "حدث خطأ ما" });
+        }
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {

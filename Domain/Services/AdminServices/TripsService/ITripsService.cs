@@ -7,5 +7,8 @@ namespace Domain.Services.AdminServices.ItemService
     {
         QueryResult<TripsDto> GetList(SearchCriteria model);
         bool Delete(int Id, string userId);
+        Task<bool> Create(TripsDto input, string userId);
+        TripsDto GetById(int Id);
+        Task<bool> Edit(TripsDto input, string userId);
     }
 }

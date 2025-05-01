@@ -10,7 +10,7 @@ namespace Domain.Services.UIServices.AuctionService
         {
             _db = db;
         }
-        public List<TripsDto> GetHomeAuctions()
+        public List<TripsDto> GetTrips()
         {
             var List = _db.Trips
                 .Where(r => r.IsDeleted == false)
@@ -20,38 +20,35 @@ namespace Domain.Services.UIServices.AuctionService
                     Id = a.Id,
                     Name = a.Name,
                     DriverName = a.Driver.Name,
+                    PlateNumber = a.Driver.PlateNumber,
+                    Drivernumber = a.Driver.PhoneNumber,
+                    DriverProfileImageUrl = a.Driver.ProfileImageUrl,
                     RouteName = a.Route.Name,
+                    NoOfSeats = a.NoOfSeats,
+                    Date = a.Date,
+                    Price = a.Route.Price,
+                    IsBooked = a.IsBooked,
                 })
-                .Take(10)
                 .ToList();
             return List;
-
         }
-
-        public List<TripsDto> GetAuctions()
+        public bool ReserveTrip(int Id, string userId)
         {
-            var List = _db.Trips.OrderByDescending(x => x.Id)
-                .Where(r => r.IsDeleted == false).Select(a => new TripsDto
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    DriverName = a.Driver.Name,
-                    RouteName = a.Route.Name,
-                }).ToList();
-
-            return List;
+            var obj = _db.Trips.Where(r => r.Id == Id).FirstOrDefault();
+            obj.IsBooked = true;
+            obj.ModifiedBy = userId;
+            obj.ModifiedOn = DateTime.Now;
+            _db.Trips.Update(obj);
+            return _db.SaveChanges() > 0;
         }
-        public TripsDto GetById(int id)
+        public bool Cancel(int Id, string userId)
         {
-            var res = _db.Trips.Where(r => r.IsDeleted == false && r.Id == id).Select(a => new TripsDto
-            {
-                Id = a.Id,
-                Name = a.Name,
-                DriverName = a.Driver.Name,
-                RouteName = a.Route.Name,
-
-            }).FirstOrDefault();
-            return res;
+            var obj = _db.Trips.Where(r => r.Id == Id).FirstOrDefault();
+            obj.IsBooked = false;
+            obj.ModifiedBy = userId;
+            obj.ModifiedOn = DateTime.Now;
+            _db.Trips.Update(obj);
+            return _db.SaveChanges() > 0;
         }
     }
 }
