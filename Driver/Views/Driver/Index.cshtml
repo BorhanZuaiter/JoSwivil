@@ -2,7 +2,7 @@
 @using Domain.DTO.AdminDtos
 @model TableDto<DriverDto>
 @{
-    ViewData["Title"] = "السائقين";
+    ViewData["Title"] = "Drivers";
 }
 <div id="app">
     <div class="card">
@@ -11,12 +11,12 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>الاسم</th>
-                        <th>البريد الالكتروني</th>
-                        <th>رقم الهاتف</th>
-                        <th>نوع السيارة</th>
-                        <th>رقم اللوحة</th>
-                        <th>الاجراءات</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Car Type</th>
+                        <th>Plate Number</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -29,10 +29,10 @@
                             <td><strong>@item.Car</strong></td>
                             <td><strong>@item.PlateNumber</strong></td>
                             <td class="align-middle">
-                               
-                                    @await Html.PartialAsync("~/Views/Shared/_Procedures.cshtml",
-                                             new ProceduresButtons { HasDelete = true, HasEdit = true, Id = item.Id.ToString() })
-                                
+
+                                @await Html.PartialAsync("~/Views/Shared/_Procedures.cshtml",
+                                         new ProceduresButtons { HasDelete = true, HasEdit = true, Id = item.Id.ToString() })
+
                             </td>
                         </tr>
                     }

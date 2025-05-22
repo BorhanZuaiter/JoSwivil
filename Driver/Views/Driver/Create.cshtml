@@ -1,11 +1,11 @@
 ﻿@model Domain.DTO.AdminDtos.DriverDto
 @{
-    ViewData["Title"] = "انشاء سائق جديد";
+    ViewData["Title"] = "Create New Driver";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var controller = this.ViewContext.RouteData.Values["controller"].ToString();
 }
 <div class="container-xxl flex-grow-1 container-p-y" id="app">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">الرئيسية/</span>انشاء تاجر جديد</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Create New Driver</h4>
     <div class="row">
         <div class="col-12-xl">
             <div class="card mb-4">
@@ -16,60 +16,60 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">الاسم</label>
-                            <input type="text" name="Name" id="Name" class="form-control" placeholder="ادخل الاسم">
-                        </div>
-                         <div class="mb-3">
-                            <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">البريد الالكتروني</label>
-                            <input type="text" class="form-control" name="Email" id="Email" placeholder="ادخل البريد الالكتروني" required>
+                            <label class="form-label">Name</label>
+                            <input type="text" name="Name" id="Name" class="form-control" placeholder="Enter the name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">كلمة المرور</label>
-                            <input type="text" name="Password" id="Password" class="form-control" placeholder="ادخل كلمة المرور">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" name="Email" id="Email" placeholder="Enter the email" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">رقم الهاتف</label>
-                            <input type="number" name="PhoneNumber" id="PhoneNumber" class="form-control" placeholder="ادخل رقم الهاتف">
+                            <label class="form-label">Password</label>
+                            <input type="text" name="Password" id="Password" class="form-control" placeholder="Enter the password">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">العنوان</label>
-                            <input type="text" class="form-control" name="Address" id="Address" placeholder="ادخل العنوان" required>
+                            <label class="form-label">Phone Number</label>
+                            <input type="number" name="PhoneNumber" id="PhoneNumber" class="form-control" placeholder="Enter the phone number">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">نوع السيارة</label>
-                            <input type="text" class="form-control" name="Car" id="Car" placeholder="ادخل نوع السيارة" required>
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" name="Address" id="Address" placeholder="Enter the address" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">رقم اللوحة</label>
-                            <input type="text" class="form-control" name="PlateNumber" id="PlateNumber" placeholder="ادخل رقم اللوحة" required>
+                            <label class="form-label">Car Type</label>
+                            <input type="text" class="form-control" name="car" id="car" placeholder="Enter the car type" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">صورة الملف الشخصي</label>
-                            <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" placeholder="ارفق صورة الملف الشخصي" required>
+                            <label class="form-label">Plate Number</label>
+                            <input type="text" class="form-control" name="PlateNumber" id="PlateNumber" placeholder="Enter the plate number" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">صورة الهوية</label>
-                            <input type="file" class="form-control" name="IdImage" id="IdImage" placeholder="ارفق صورة الهوية" required>
+                            <label class="form-label">Profile Image</label>
+                            <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" placeholder="Attach profile image" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color:red">*</label>
+                            <label class="form-label">ID Image</label>
+                            <input type="file" class="form-control" name="IdImage" id="IdImage" placeholder="Attach ID image" required>
                         </div>
                         <div class="mb-3" id="CategoryDiv">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">المسار</label>
+                            <label class="form-label">Route</label>
                             <select class="form-select" name="RouteId" id="RouteId" style="width:100%">
-                                <option value="0">اختر المسار</option>
+                                <option value="0">Choose Route</option>
                             </select>
                         </div>
-                        <button type="button" class="btn btn-primary d-inline" id="CreateButton" onclick="CreateData()">انشاء</button>
+                        <button type="button" class="btn btn-primary d-inline" id="CreateButton" onclick="CreateData()">Create</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
-                            جاري الانشاء ...
+                            Creating...
                         </button>
                     </form>
                 </div>
@@ -95,7 +95,7 @@
         var IdImage = document.getElementById("IdImage").files;
 
         if (!Name && !MainDescription) {
-            OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
+            OpenMessageModal("warning", "Please enter the required fields");
             return false;
         }
 

@@ -1,11 +1,11 @@
 ﻿@model Domain.DTO.AdminDtos.DriverDto
 @{
-    ViewData["Title"] = "تعديل معلومات السائق";
+    ViewData["Title"] = "Edit Driver Information";
     var controller = this.ViewContext.RouteData.Values["controller"].ToString();
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-xxl flex-grow-1 container-p-y" id="app">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">الرئيسية/</span>تعديل معلومات التاجر</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Edit Driver Information</h4>
     <div class="row">
         <div class="col-12-xl">
             <div class="card mb-4">
@@ -16,38 +16,38 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">الاسم</label>
-                            <input type="text" name="Name" id="Name" class="form-control" value="@Model.Name" placeholder="ادخل الاسم">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="Name" id="Name" class="form-control" value="@Model.Name" placeholder="Enter the name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">البريد الالكتروني</label>
-                            <input type="text" class="form-control" name="Email" id="Email" value="@Model.Email" placeholder="ادخل البريد الالكتروني" required>
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" name="Email" id="Email" value="@Model.Email" placeholder="Enter the email" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">كلمة المرور</label>
-                            <input type="text" name="Password" id="Password" value="@Model.Password" class="form-control" placeholder="ادخل كلمة المرور">
+                            <label class="form-label">Password</label>
+                            <input type="text" name="Password" id="Password" value="@Model.Password" class="form-control" placeholder="Enter the password">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">رقم الهاتف</label>
-                            <input type="number" name="PhoneNumber" id="PhoneNumber" class="form-control" value="@Model.PhoneNumber" placeholder="ادخل رقم الهاتف">
+                            <label class="form-label">Phone Number</label>
+                            <input type="number" name="PhoneNumber" id="PhoneNumber" class="form-control" value="@Model.PhoneNumber" placeholder="Enter the phone number">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">العنوان</label>
-                            <input type="text" class="form-control" name="Address" id="Address" value="@Model.Address" placeholder="ادخل العنوان" required>
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" name="Address" id="Address" value="@Model.Address" placeholder="Enter the address" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">نوع السيارة</label>
-                            <input type="text" class="form-control" name="Car" id="Car" value="@Model.Car" placeholder="ادخل نوع السيارة" required>
+                            <label class="form-label">Car Type</label>
+                            <input type="text" class="form-control" name="Car" id="Car" value="@Model.Car" placeholder="Enter the car type" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">رقم اللوحة</label>
-                            <input type="text" class="form-control" name="PlateNumber" id="PlateNumber" value="@Model.PlateNumber" placeholder="ادخل رقم اللوحة" required>
+                            <label class="form-label">Plate Number</label>
+                            <input type="text" class="form-control" name="PlateNumber" id="PlateNumber" value="@Model.PlateNumber" placeholder="Enter the plate number" required>
                         </div>
                         <div class="mb-3">
                             <img src="@Model.ProfileImageUrl" height="200" width="200" />
@@ -55,8 +55,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">صورة الملف الشخصي</label>
-                            <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" placeholder="ارفق صورة الملف الشخصي" required>
+                            <label class="form-label">Profile Image</label>
+                            <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" placeholder="Attach profile image" required>
                         </div>
                         <div class="mb-3">
                             <img src="@Model.IdImageUrl" height="200" width="200" />
@@ -64,24 +64,23 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">صورة الهوية</label>
-                            <input type="file" class="form-control" name="IdImage" id="IdImage" placeholder="ارفق صورة الهوية" required>
+                            <label class="form-label">ID Image</label>
+                            <input type="file" class="form-control" name="IdImage" id="IdImage" placeholder="Attach ID image" required>
                         </div>
                         <div class="mb-3" id="CategoryDiv">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">المسار</label>
+                            <label class="form-label">Route</label>
                             <select class="form-select" name="RouteId" id="RouteId" style="width:100%">
-                                <option value="0">اختر المسار</option>
+                                <option value="0">Choose Route</option>
                             </select>
                         </div>
-                        <button type="button" class="btn btn-primary d-inline" id="EditButton" onclick="EditData()">تعديل</button>
+                        <button type="button" class="btn btn-primary d-inline" id="EditButton" onclick="EditData()">Edit</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
-                            جاري الانشاء ...
+                            Editing...
                         </button>
                     </form>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -107,7 +106,7 @@
         var IdImage = document.getElementById("IdImage").files;
 
         if (!Name && !MainDescription) {
-            OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
+            OpenMessageModal("warning", "Please enter the required fields");
             return false;
         }
 

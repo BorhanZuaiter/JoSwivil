@@ -2,7 +2,7 @@
 @using Domain.DTO.AdminDtos
 @model TableDto<FeedbackDto>
 @{
-    ViewData["Title"] = "الرسائل";
+    ViewData["Title"] = "Messages";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="app">
@@ -12,10 +12,10 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>الاسم</th>
-                        <th>البريد الالكتروني</th>
-                        <th>الرسالة</th>
-                        <th>تم التواصل</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Contacted</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -29,11 +29,11 @@
                             <td style="text-align: right; vertical-align: middle;">
                                 @if (item.Iscontacted)
                                 {
-                                    <strong>تم التواصل</strong>
+                                    <strong>Contacted</strong>
                                 }
                                 else
                                 {
-                                    <button class="btn btn-primary iscontacted-button" data-id="@item.Id">تم التواصل؟</button>
+                                    <button class="btn btn-primary iscontacted-button" data-id="@item.Id">Contacted?</button>
                                 }
                             </td>
                         </tr>
@@ -56,13 +56,13 @@
             data: { id: itemId },
             success: function (response) {
                 if (response.success) {
-                    $button.replaceWith('<strong>تم التواصل</strong>');
+                    $button.replaceWith('<strong>Contacted</strong>');
                 } else {
-                    alert('حدث خطأ أثناء تحديث الحالة.');
+                    alert('An error occurred while updating the status.');
                 }
             },
             error: function () {
-                alert('حدث خطأ أثناء إرسال الطلب.');
+                alert('An error occurred while sending the request.');
             }
         });
     });

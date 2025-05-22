@@ -39,11 +39,11 @@ public class AccountController : Controller
         }
 
         var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.Name, driver.Name),
-        new Claim(ClaimTypes.Email, driver.Email),
-        new Claim("DriverId", driver.Id.ToString())
-    };
+        {
+            new Claim(ClaimTypes.Name, driver.Name),
+            new Claim(ClaimTypes.Email, driver.Email),
+            new Claim("DriverId", driver.Id.ToString())
+        };
 
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         var authProperties = new AuthenticationProperties { IsPersistent = true };
@@ -52,7 +52,6 @@ public class AccountController : Controller
 
         return RedirectToAction("Index", "Home");
     }
-
 
     [HttpGet]
     public async Task<IActionResult> Logout()

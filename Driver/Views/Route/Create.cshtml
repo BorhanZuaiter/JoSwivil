@@ -1,11 +1,11 @@
 ﻿@model Domain.DTO.AdminDtos.RouteDto
 @{
-    ViewData["Title"] = "انشاء مسار جديدة";
+    ViewData["Title"] = "Create New Route";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var controller = this.ViewContext.RouteData.Values["controller"].ToString();
 }
 <div class="container-xxl flex-grow-1 container-p-y" id="app">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">الرئيسية/</span>انشاء فئة جديدة</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Create New Category</h4>
     <div class="row">
         <div class="col-12-xl">
             <div class="card mb-4">
@@ -16,23 +16,23 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">الاسم</label>
-                            <input type="text" name="Name" id="Name" class="form-control" placeholder="ادخل الاسم">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="Name" id="Name" class="form-control" placeholder="Enter the name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">السعر</label>
-                            <input type="text" name="Price" id="Price" class="form-control" placeholder="ادخل السعر">
+                            <label class="form-label">Price</label>
+                            <input type="text" name="Price" id="Price" class="form-control" placeholder="Enter the price">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">صورة العرض</label>
-                            <input type="file" class="form-control" name="PrivewImage" id="PrivewImage" placeholder="ارفق صورة العرض" required>
+                            <label class="form-label">Display Image</label>
+                            <input type="file" class="form-control" name="PrivewImage" id="PrivewImage" placeholder="Attach display image" required>
                         </div>
-                        <button type="button" class="btn btn-primary d-inline" id="CreateButton" onclick="CreateData()">انشاء</button>
+                        <button type="button" class="btn btn-primary d-inline" id="CreateButton" onclick="CreateData()">Create</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
-                            جاري الانشاء ...
+                            Creating...
                         </button>
                     </form>
                 </div>
@@ -48,7 +48,7 @@
 
 
         if (!Name) {
-            OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
+            OpenMessageModal("warning", "Please enter the required fields");
             return false;
         }
 

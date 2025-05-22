@@ -1,11 +1,11 @@
 ﻿@model Domain.DTO.AdminDtos.FAQDto
 @{
-    ViewData["Title"] = "انشاء سؤال جديد";
+    ViewData["Title"] = "Create New Question";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var controller = this.ViewContext.RouteData.Values["controller"].ToString();
 }
 <div class="container-xxl flex-grow-1 container-p-y" id="app">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">الرئيسية/</span>انشاء سؤال جديد</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Create New Question</h4>
     <div class="row">
         <div class="col-12-xl">
             <div class="card mb-4">
@@ -16,18 +16,18 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">السؤال</label>
-                            <input type="text" name="Question" id="Question" class="form-control" placeholder="ادخل السؤال">
+                            <label class="form-label">Question</label>
+                            <input type="text" name="Question" id="Question" class="form-control" placeholder="Enter the question">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">الاجابة</label>
-                            <input type="text" class="form-control" name="Answer" id="Answer" placeholder="ادخل الاجابة" required>
+                            <label class="form-label">Answer</label>
+                            <input type="text" class="form-control" name="Answer" id="Answer" placeholder="Enter the answer" required>
                         </div>
-                        <button type="button" class="btn btn-primary d-inline" id="CreateButton" onclick="CreateData()">انشاء</button>
+                        <button type="button" class="btn btn-primary d-inline" id="CreateButton" onclick="CreateData()">Create</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
-                            جاري الانشاء ...
+                            Creating...
                         </button>
                     </form>
                 </div>
@@ -41,7 +41,7 @@
         var Answer = $('#Answer').val();
 
         if (!Question && !Answer) {
-            OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
+            OpenMessageModal("warning", "Please enter the required fields");
             return false;
         }
 

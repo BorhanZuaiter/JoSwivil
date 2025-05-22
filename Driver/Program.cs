@@ -2,6 +2,8 @@ using Domain;
 using Domain.Common;
 using Domain.Entities;
 using Domain.Helpers;
+using Domain.Services.AdminServices.ItemService;
+using Domain.Services.AdminServices.Tripservice;
 using Domain.Services.DriverServices.DriverService;
 using Domain.Services.DriverServices.RouteService;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -40,6 +42,7 @@ options =>
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddTransient<IRouteService, RouteService>();
 builder.Services.AddTransient<IDriverService, DriverService>();
+builder.Services.AddTransient<ITripsService, TripsService>();
 builder.Services.AddTransient<StorageConnection>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

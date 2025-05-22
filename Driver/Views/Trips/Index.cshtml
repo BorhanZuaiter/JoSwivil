@@ -1,8 +1,9 @@
 ﻿@using Domain.Common
 @using Domain.DTO.AdminDtos
-@model TableDto<DriverDto>
+@model TableDto<TripsDto>
+
 @{
-    ViewData["Title"] = "Drivers";
+    ViewData["Title"] = "Trips";
 }
 <div id="app">
     <div class="card">
@@ -11,12 +12,10 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Car Type</th>
-                        <th>Plate Number</th>
-                        <th>Actions</th>
+                        <th>الاسم</th>
+                        @* Remove Driver and Route Name Columns *@
+                        <th>السعر</th>
+                        <th>الاجراءات</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -24,13 +23,11 @@
                     {
                         <tr>
                             <td><strong>@item.Name</strong></td>
-                            <td><strong>@item.Email</strong></td>
-                            <td><strong>@item.PhoneNumber</strong></td>
-                            <td><strong>@item.Car</strong></td>
-                            <td><strong>@item.PlateNumber</strong></td>
+                            @* Remove DriverName and RouteName display *@
+                            <td><strong>@item.Price</strong></td>
                             <td class="align-middle">
                                 @await Html.PartialAsync("~/Views/Shared/_Procedures.cshtml",
-                                         new ProceduresButtons { HasDelete = true, HasEdit = true, Id = item.Id.ToString() })
+                                         new ProceduresButtons { HasDelete = false, HasEdit = false, Id = item.Id.ToString() })
                             </td>
                         </tr>
                     }
@@ -42,3 +39,8 @@
     @await Html.PartialAsync("~/Views/Shared/_DeleteModal.cshtml")
     <input hidden id="deleteId" />
 </div>
+
+<script>
+    // There is no need to make any changes in the script.
+    // The previous code was removed and fixed.
+</script>

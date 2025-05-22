@@ -1,11 +1,11 @@
 ﻿@model Domain.DTO.AdminDtos.RouteDto
 @{
-    ViewData["Title"] = "تعديل المسار";
+    ViewData["Title"] = "Edit Route";
     var controller = this.ViewContext.RouteData.Values["controller"].ToString();
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-xxl flex-grow-1 container-p-y" id="app">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">الرئيسية/</span>تعديل الفئة</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Edit Category</h4>
     <div class="row">
         <div class="col-12-xl">
             <div class="card mb-4">
@@ -16,13 +16,13 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">الاسم</label>
-                            <input type="text" name="Name" id="Name" class="form-control" value="@Model.Name" placeholder="ادخل الاسم">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="Name" id="Name" class="form-control" value="@Model.Name" placeholder="Enter the name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label"> السعر</label>
-                            <input type="text" name="Price" value="@Model.Price" id="Price" class="form-control" placeholder="ادخل رقم الهاتف">
+                            <label class="form-label"> Price</label>
+                            <input type="text" name="Price" value="@Model.Price" id="Price" class="form-control" placeholder="Enter the price">
                         </div>
                         <div class="mb-3">
                             <img src="@Model.PrivewImageUrl" height="200" width="200" />
@@ -30,13 +30,13 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">صورة العرض</label>
-                            <input type="file" class="form-control" name="PrivewImage" id="PrivewImage" placeholder="ارفق صورة العرض" required>
+                            <label class="form-label">Preview Image</label>
+                            <input type="file" class="form-control" name="PrivewImage" id="PrivewImage" placeholder="Attach preview image" required>
                         </div>
-                        <button type="button" class="btn btn-primary d-inline" id="EditButton" onclick="EditData()">تعديل</button>
+                        <button type="button" class="btn btn-primary d-inline" id="EditButton" onclick="EditData()">Edit</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
-                            جاري التعديل ...
+                            Editing...
                         </button>
                     </form>
                 </div>
@@ -51,7 +51,7 @@
         var PrivewImage = document.getElementById("PrivewImage").files;
 
         if ( !Name) {
-            OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
+            OpenMessageModal("warning", "Please enter the required fields");
             return false;
         }
 
