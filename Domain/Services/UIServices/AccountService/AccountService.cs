@@ -26,6 +26,7 @@ namespace Domain.Services.UIServices.AccountService
                 LastName = model.LastName,
                 UserName = model.Email,
                 Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
                 NormalizedEmail = model.Email.ToUpper()  // Ensure email is stored properly
             };
 

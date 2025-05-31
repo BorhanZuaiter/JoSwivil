@@ -1,4 +1,6 @@
-﻿namespace Domain.DTO.AdminDtos
+﻿using Domain.Entities;
+
+namespace Domain.DTO.AdminDtos
 {
     public class TripsDto
     {
@@ -11,6 +13,6 @@
         public string DriverName { get; set; }
         public string RouteName { get; set; }
         public DateTime Date { get; set; }
-
+        public List<TripReservationDto> Reservations { get; set; } = new();
     }
 }

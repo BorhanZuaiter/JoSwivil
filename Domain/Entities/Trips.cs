@@ -13,5 +13,6 @@
         public int UserId { get; set; }
         public User User { get; set; }
         public bool IsBooked { get; set; }
+        public ICollection<TripReservation> Reservations { get; set; }
     }
 }

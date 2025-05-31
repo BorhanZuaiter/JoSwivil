@@ -1,4 +1,6 @@
-﻿namespace Domain.DTO.UIDtos
+﻿using Domain.Entities;
+
+namespace Domain.DTO.UIDtos
 {
     public class TripsDto
     {
@@ -15,5 +17,6 @@
         public int NoOfSeats { get; set; }
         public DateTime Date { get; set; }
         public bool IsBooked { get; set; }
+        public List<TripReservation> Reservations { get; set; } = new(); // ensures it's never null
     }
 }

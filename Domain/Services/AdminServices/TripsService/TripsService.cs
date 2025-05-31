@@ -30,7 +30,15 @@ namespace Domain.Services.AdminServices.Tripservice
                     RouteName = r.Route.Name,
                     Price = r.Route.Price,
                     NoOfSeats = r.NoOfSeats,
-                }).ToQueryResult(model.PageNumber, model.PageSize);
+                    Reservations = r.Reservations.Select(res => new TripReservationDto
+                    {
+                        PhoneNumber = res.User != null ? res.User.PhoneNumber : "",
+                        UserName = res.User != null ? (res.User.FirstName + " " + res.User.LastName) : "",
+                        UserId = res.UserId
+                    }).ToList()
+                })
+                .ToQueryResult(model.PageNumber, model.PageSize);
+
             return res;
         }
         public async Task<bool> Create(TripsDto input, string userId)

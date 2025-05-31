@@ -47,7 +47,7 @@
                                         </svg>
                                     </div>
                                     <div class="content">
-                                        <h6><a href="https://maps.app.goo.gl/kqJUoD2Fa4GJ2aPWA">@item.RouteName</a></h6>
+                                        <h6><a href="https://maps.app.goo.gl/kqJUoD2Fa4GJ2aPWA" target="_blank">@item.RouteName</a></h6>
                                     </div>
                                 </li>
                                 <li class="single-contact">
@@ -76,12 +76,14 @@
                                         <h6><a>@item.PlateNumber</a></h6>
 
                                     </div>
-
                                 </li>
                             </ul>
+                            @{
+                                var userId = ViewBag.UserId as string;
+                            }
                             @if (User.Identity.IsAuthenticated)
                             {
-                                if (item.IsBooked)
+                                if (item.Reservations.Any(r => r.UserId == userId))
                                 {
                                     <button class="btn btn-primary cbook-btn" data-id="@item.Id">Cancel</button>
                                     <a>Booked</a>
@@ -112,7 +114,7 @@
                     success: function (response) {
                         if (response.status) {
                             alert('Trip successfully booked!');
-                            location.reload(); // Optional: refresh to reflect changes
+                            location.reload();
                         } else {
                             alert(response.message || 'An error occurred.');
                         }

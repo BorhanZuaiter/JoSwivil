@@ -30,9 +30,12 @@ namespace UI.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var res = _tripsService.GetTrips();
+
+            var user = await _userManager.GetUserAsync(User);
+            ViewBag.UserId = user?.Id;
 
             return View(res);
         }
@@ -40,16 +43,23 @@ namespace UI.Controllers
         public async Task<IActionResult> ReserveTrip(int id)
         {
             var user = await _userManager.GetUserAsync(User);
-            var res = _tripsService.ReserveTrip(id, user.Id);
+            if (user == null)
+                return Json(new { status = false, message = "المستخدم غير مسجل الدخول" });
+            ViewBag.UserId = user?.Id;
+
+            var res = await _tripsService.ReserveTrip(id, user.Id);
             if (res)
                 return Json(new { status = true });
-            return Json(new { status = false, message = "حدث خطأ ما" });
+            return Json(new { status = false, message = "لا يوجد مقاعد لحجزها, حجز المقاعد مكتمل" });
         }
         [HttpPut]
         public async Task<IActionResult> CancelReserveTrip(int id)
         {
             var user = await _userManager.GetUserAsync(User);
-            var res = _tripsService.Cancel(id, user.Id);
+            if (user == null)
+                return Json(new { status = false, message = "المستخدم غير مسجل الدخول" });
+
+            var res = await _tripsService.Cancel(id, user.Id);
             if (res)
                 return Json(new { status = true });
             return Json(new { status = false, message = "حدث خطأ ما" });

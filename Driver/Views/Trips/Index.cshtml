@@ -13,9 +13,9 @@
                 <thead>
                     <tr>
                         <th>الاسم</th>
-                        @* Remove Driver and Route Name Columns *@
                         <th>السعر</th>
-                        <th>الاجراءات</th>
+                        <th>الركاب</th>
+                      
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -23,11 +23,15 @@
                     {
                         <tr>
                             <td><strong>@item.Name</strong></td>
-                            @* Remove DriverName and RouteName display *@
                             <td><strong>@item.Price</strong></td>
-                            <td class="align-middle">
-                                @await Html.PartialAsync("~/Views/Shared/_Procedures.cshtml",
-                                         new ProceduresButtons { HasDelete = false, HasEdit = false, Id = item.Id.ToString() })
+                            <td>
+                                @if (item.Reservations != null)
+                                {
+                                    foreach (var name in item.Reservations)
+                                    {
+                                        <span class="badge bg-info text-dark">@($"{name.UserName} {name.PhoneNumber}")</span>
+                                    }
+                                }
                             </td>
                         </tr>
                     }

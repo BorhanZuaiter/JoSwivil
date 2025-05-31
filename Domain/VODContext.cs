@@ -100,5 +100,24 @@ namespace Domain
         public DbSet<Trips> Trips { get; set; }
         public DbSet<Driver> Driver { get; set; }
         public DbSet<Feedback> Feedback { get; set; }
+        public DbSet<TripReservation> TripReservations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TripReservation>()
+                .HasKey(tr => new { tr.TripId, tr.UserId });
+
+            modelBuilder.Entity<TripReservation>()
+                .HasOne(tr => tr.Trips)
+                .WithMany(t => t.Reservations)
+                .HasForeignKey(tr => tr.TripId);
+
+            modelBuilder.Entity<TripReservation>()
+                .HasOne(tr => tr.User)
+                .WithMany(u => u.Reservations)
+                .HasForeignKey(tr => tr.UserId);
+        }
     }
 }

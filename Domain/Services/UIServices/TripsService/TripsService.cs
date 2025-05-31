@@ -1,4 +1,6 @@
 ﻿using Domain.DTO.UIDtos;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Services.UIServices.AuctionService
 {
@@ -10,10 +12,12 @@ namespace Domain.Services.UIServices.AuctionService
         {
             _db = db;
         }
-        public List<TripsDto> GetTrips()
+        public List<TripsDto> GetTrips(string userId = null)
         {
-            var List = _db.Trips
+            var trips = _db.Trips
                 .Where(r => r.IsDeleted == false)
+                  .Include(t => t.Driver)
+                  .Include(t => t.Route)
                 .OrderBy(x => Guid.NewGuid())
                 .Select(a => new TripsDto
                 {
@@ -27,28 +31,55 @@ namespace Domain.Services.UIServices.AuctionService
                     NoOfSeats = a.NoOfSeats,
                     Date = a.Date,
                     Price = a.Route.Price,
-                    IsBooked = a.IsBooked,
+                    IsBooked = userId != null && a.Reservations.Any(r => r.UserId == userId),
+                    Reservations = a.Reservations.Select(r => new TripReservation
+                    {
+                        UserId = r.UserId,
+
+
+                    }).ToList()
+
                 })
                 .ToList();
-            return List;
+
+            return trips;
         }
-        public bool ReserveTrip(int Id, string userId)
+
+        public async Task<bool> ReserveTrip(int tripId, string userId)
         {
-            var obj = _db.Trips.Where(r => r.Id == Id).FirstOrDefault();
-            obj.IsBooked = true;
-            obj.ModifiedBy = userId;
-            obj.ModifiedOn = DateTime.Now;
-            _db.Trips.Update(obj);
-            return _db.SaveChanges() > 0;
+            var alreadyReserved = await _db.TripReservations
+                .AnyAsync(r => r.TripId == tripId && r.UserId == userId);
+            if (alreadyReserved) return false;
+
+            // Get the trip and its current reservation count
+            var trip = await _db.Trips
+                .Include(t => t.Reservations)
+                .FirstOrDefaultAsync(t => t.Id == tripId);
+
+            if (trip == null) return false;
+
+            var currentReservations = trip.Reservations.Count;
+
+            if (currentReservations >= trip.NoOfSeats) return false;
+
+            var reservation = new TripReservation
+            {
+                TripId = tripId,
+                UserId = userId
+            };
+
+            _db.TripReservations.Add(reservation);
+            return await _db.SaveChangesAsync() > 0;
         }
-        public bool Cancel(int Id, string userId)
+        public async Task<bool> Cancel(int tripId, string userId)
         {
-            var obj = _db.Trips.Where(r => r.Id == Id).FirstOrDefault();
-            obj.IsBooked = false;
-            obj.ModifiedBy = userId;
-            obj.ModifiedOn = DateTime.Now;
-            _db.Trips.Update(obj);
-            return _db.SaveChanges() > 0;
+            var reservation = await _db.TripReservations
+                .FirstOrDefaultAsync(r => r.TripId == tripId && r.UserId == userId);
+
+            if (reservation == null) return false;
+
+            _db.TripReservations.Remove(reservation);
+            return await _db.SaveChangesAsync() > 0;
         }
     }
 }
