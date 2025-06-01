@@ -83,16 +83,26 @@
                             }
                             @if (User.Identity.IsAuthenticated)
                             {
-                                if (item.Reservations.Any(r => r.UserId == userId))
+                                bool isUserBooked = item.Reservations.Any(r => r.UserId == userId);
+                                int availableSeats = Math.Max(item.NoOfSeats - item.Reservations.Count, 0);
+
+                                if (isUserBooked)
                                 {
                                     <button class="btn btn-primary cbook-btn" data-id="@item.Id">Cancel</button>
                                     <a>Booked</a>
                                 }
-                                else
+                                else if (availableSeats > 0)
                                 {
                                     <button class="btn btn-primary book-btn" data-id="@item.Id">Book Now</button>
                                 }
+                                else
+                                {
+                                    <span class="text-danger fw-bold">Fully Booked</span>
+                                }
+
+                                <span>@availableSeats Seats Available</span>
                             }
+
                         </div>
                     </div>
                 </div>
