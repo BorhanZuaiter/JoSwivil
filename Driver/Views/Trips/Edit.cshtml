@@ -1,11 +1,11 @@
 ﻿@model Domain.DTO.AdminDtos.TripsDto
 @{
-    ViewData["Title"] = "تعديل الرحلة";
+    ViewData["Title"] = "Edit Trip";
     var controller = this.ViewContext.RouteData.Values["controller"].ToString();
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-xxl flex-grow-1 container-p-y" id="app">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">الرئيسية/</span>تعديل الرحلة</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home / </span>Edit Trip</h4>
     <div class="row">
         <div class="col-12-xl">
             <div class="card mb-4">
@@ -16,37 +16,37 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">الاسم</label>
-                            <input type="text" name="Name" id="Name" class="form-control" value="@Model.Name" placeholder="ادخل الاسم">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="Name" id="Name" class="form-control" value="@Model.Name" placeholder="Enter name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">عدد المقاعد</label>
-                            <input type="number" name="NoOfSeats" id="NoOfSeats" class="form-control" value="@Model.NoOfSeats" placeholder="ادخل عدد المقاعد">
+                            <label class="form-label">Number of Seats</label>
+                            <input type="number" name="NoOfSeats" id="NoOfSeats" class="form-control" value="@Model.NoOfSeats" placeholder="Enter number of seats">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">التاريخ</label>
-                            <input type="datetime-local" name="Date" id="Date" class="form-control" value="@Model.Date" placeholder="ادخل التاريخ">
+                            <label class="form-label">Date</label>
+                            <input type="datetime-local" name="Date" id="Date" class="form-control" value="@Model.Date" placeholder="Enter date">
                         </div>
                         <div class="mb-3" id="CategoryDiv">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">المسار</label>
+                            <label class="form-label">Route</label>
                             <select class="form-select" name="RouteId" id="RouteId" style="width:100%">
-                                <option value="0">اختر المسار</option>
+                                <option value="0">Select route</option>
                             </select>
                         </div>
                         <div class="mb-3" id="CategoryDiv">
                             <label class="form-label" style="color:red">*</label>
-                            <label class="form-label">السائق</label>
+                            <label class="form-label">Driver</label>
                             <select class="form-select" name="DriverId" id="DriverId" style="width:100%">
-                                <option value="0">اختر السائق</option>
+                                <option value="0">Select driver</option>
                             </select>
                         </div>
-                        <button type="button" class="btn btn-primary d-inline" id="EditButton" onclick="EditData()">تعديل</button>
+                        <button type="button" class="btn btn-primary d-inline" id="EditButton" onclick="EditData()">Edit</button>
                         <button class="btn btn-primary d-none" type="button" id="LoadingButton" disabled>
                             <span class="spinner-border me-1" role="status" aria-hidden="true"></span>
-                            جاري التعديل ...
+                            Editing ...
                         </button>
                     </form>
                 </div>
@@ -68,7 +68,7 @@
         var RouteId = $('#RouteId').val();
 
         if (!Name && !NoOfSeats) {
-            OpenMessageModal("warning", "الرجاء ادخال الحقول المطلوبة");
+            OpenMessageModal("warning", "Please fill in the required fields.");
             return false;
         }
 
