@@ -12,11 +12,11 @@ namespace Domain.Helpers
         {
             var config = new AmazonS3Config
             {
-                ServiceURL = "https://mazadkom.fra1.digitaloceanspaces.com",
+                ServiceURL = "https://aumride.nyc3.digitaloceanspaces.com",
                 ForcePathStyle = true
             };
 
-            var credentials = new Amazon.Runtime.BasicAWSCredentials("DO00AEFGLWD8HL8D3H7A", "VDivJMi1a9a9uSLoaZvWRKSejI+WH4W2yGD4XMhwVLc");
+            var credentials = new Amazon.Runtime.BasicAWSCredentials("DO00DP98JV86J8WVNWA7", "7CXLb8WI6qUc7gy82HqxuBFSbaBKyo4Ot4ifJwm91Xk");
             _client = new AmazonS3Client(credentials, config);
         }
         public async Task<string> SaveOnStorage(IFormFile formFile, string path)
@@ -28,7 +28,7 @@ namespace Domain.Helpers
             var filePath = $"production/Resources/{path}/{fileName}";
             var uploadRequest = new PutObjectRequest
             {
-                BucketName = "mazadkom",
+                BucketName = "aumride",
                 Key = filePath,
                 InputStream = memoryStream,
                 ContentType = formFile.ContentType,
@@ -37,7 +37,7 @@ namespace Domain.Helpers
 
             await _client.PutObjectAsync(uploadRequest);
 
-            return $"https://mazadkom.fra1.digitaloceanspaces.com/mazadkom/{filePath}";
+            return $"https://aumride.nyc3.digitaloceanspaces.com/aumride/{filePath}";
         }
         public async Task<string> UpdateFileAsync(string oldFilePath, IFormFile formFile, string path)
         {
@@ -47,7 +47,7 @@ namespace Domain.Helpers
                 string oldpath = oldFilePath.Substring(indexOfImages);
                 await _client.DeleteObjectAsync(new DeleteObjectRequest
                 {
-                    BucketName = "mazadkom",
+                    BucketName = "aumride",
                     Key = oldpath,
                 });
             }
@@ -59,7 +59,7 @@ namespace Domain.Helpers
             var filePath = $"production/Resources/{path}/{fileName}";
             var uploadRequest = new PutObjectRequest
             {
-                BucketName = "mazadkom",
+                BucketName = "aumride",
                 Key = filePath,
                 InputStream = memoryStream,
                 ContentType = formFile.ContentType,
@@ -67,7 +67,7 @@ namespace Domain.Helpers
             };
             await _client.PutObjectAsync(uploadRequest);
 
-            return $"https://mazadkom.fra1.digitaloceanspaces.com/mazadkom/{filePath}";
+            return $"https://aumride.nyc3.digitaloceanspaces.com/aumride/{filePath}";
         }
     }
 }
